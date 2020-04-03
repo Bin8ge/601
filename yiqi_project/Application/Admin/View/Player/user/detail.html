@@ -1,0 +1,434 @@
+<extend name="Public/base"/>
+<block name="body">
+    <div class="panle panle-bg player-detail pad0">
+        <div class="panel-heading panel-head-bg">
+            <a class="panle-title">玩家详情</a>
+        </div>
+
+        <php>$related_url = "$controller_path/related_query";</php>
+
+        <!-- 顶部标题 -->
+        <div class="col-lg-12 col-xs-12 info_head_title">
+            用户<span class="green-a">【{$data.nickname}】</span>的详细信息 <span id="back"><input type="button" class="btn btn-custom"
+                                                                                          value="返回" onclick="javascript:history.back(-1)"
+                                                                                          style="padding:.4rem 1.2rem;"></span>
+        </div>
+        <!-- 顶部标题结束 -->
+
+        <div class="panel-body pad0">
+            <!-- 玩家基本信息 -->
+            <div class="col-lg-12 col-xs-12 info_wrap">
+                <div class="col-lg-12 col-xs-12 info_wrap_title">
+                    <span class="green-a">基本信息</span>
+                </div>
+
+                <div class="table-responsive" style="overflow-x:visible">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>UserId:</th>
+                            <td>{$data.uid}</td>
+                            <th>游戏昵称:</th>
+                            <td>{$data.nickname}</td>
+                        </tr>
+                        <tr>
+                            <th>签名:</th>
+                            <td class="text-muted">{$data['sign']|default='这个人很懒，什么都没留下'}</td>
+                            <th>绑定手机(登录):</th>
+                            <td>
+                                <if condition="$data['mobile'] neq ''">
+                                    {$data.mobile} 【{$data.mobile_type}】
+                                    <a href="javascript:void (0)" data-title="解绑手机" data-id="{$data.uid}"
+                                       class="{$unbind_mobile_alink['class']}"
+                                       data-url="{$unbind_mobile_alink['url']}">【解绑手机】</a>
+                                    <php>$change_url = $change_mobile_alink['url']."/uid/".$data['uid'];</php>
+                                    <a href="javascript:;" data-title="更换手机号" data-form-id="changemobilefrom"
+                                       class="{$change_mobile_alink['class']}"
+                                       data-url="{$change_url}" data-width="800px" data-height="600px">【更换手机号】</a>
+                                    <else/>
+                                    <php>$bind_url = $bind_mobile_alink['url']."/uid/".$data['uid'];</php>
+                                    还未绑定手机<a href="javascript:;" data-title="绑定手机号" data-form-id="bindemobilefrom"
+                                             class="{$change_mobile_alink['class']}"
+                                             data-url="{$bind_url}" data-width="800px" data-height="600px">【绑定手机号】</a>
+                                </if>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <th>注册时间:</th>
+                            <td>{$data['createtime']|date='Y-m-d H:i:s',###}</td>
+
+                            <th>注册IP:</th>
+                            <td>
+                                {$data.regip}
+                                <php>$form_id = str_replace(['/','-','_'],
+                                    '',strtolower("/field/regip/value/".$data['regip']));
+                                </php>
+                                <php>$url = $lock_alink['url']."/value/".$data['regip'];</php>
+                                <!-- <a href="javascript:;" class="{$lock_alink['class']}"
+                                    data-title="{$lock_alink['text']}" data-form-id="{$form_id}"
+                                    data-url="{$url}" data-width="530px" data-height="350px">【关联锁定】</a>-->
+                                <php>$url = $related_url."?field=regip&value=".$data['regip']</php>
+                                <a href="{$url}" class="green-a">【关联查询】</a>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>注册机器码:</th>
+                            <td>{$data.clientMark}
+                                <php>$form_id = str_replace(['/','-','_'],
+                                    '',strtolower("/field/clientMark/value/".$data['clientMark']));
+                                </php>
+                                <php>$url = $lock_alink['url']."/value/".$data['clientMark'];</php>
+                                <a href="javascript:;" class="{$lock_alink['class']}"
+                                   data-title="{$lock_alink['text']}" data-form-id="{$form_id}"
+                                   data-url="{$url}" data-width="530px" data-height="350px">【关联锁定】</a>
+                                <php>$url = $related_url."/field/clientMark/value/".$data['clientMark']</php>
+                                <a href="{$url}" class="green-a">【关联查询】</a>
+                            </td>
+                            <th>注册设备类型:</th>
+                            <td>{$data.platform}</td>
+                        </tr>
+                        <tr>
+                            <th>最后登录时间:</th>
+                            <td>{$data['logintime']|date='Y-m-d H:i:s',###}</td>
+
+                            <th>最后登录IP:</th>
+                            <td>
+                                {$data.loginIP}
+                                <php>$url = $controller_path."/related_log?field=addIp&value=".$data['loginIP']</php>
+                                <a href="{$url}" class="green-a">【关联查询】</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>最后登录机器码:</th>
+                            <td>
+                                {$data.last_login_mac}
+                                <php>$form_id = str_replace(['/','-','_'],
+                                    '',strtolower("/field/clientMark/value/".$data['last_login_mac']));
+                                </php>
+                                <php>$url = $lock_alink['url']."/value/".$data['last_login_mac']."/type/2";</php>
+                                <a href="javascript:;" class="{$lock_alink['class']}"
+                                   data-title="{$lock_alink['text']}" data-form-id="{$form_id}"
+                                   data-url="{$url}" data-width="530px" data-height="350px">【关联锁定】</a>
+                                <php>$url = $controller_path."/related_log/field/phyAdress/value/".$data['last_login_mac']</php>
+                                <a href="{$url}" class="green-a">【关联查询】</a>
+                            </td>
+                            <th>绑定手机(保险箱):</th>
+                            <td>
+                                <!-- <if condition="$data['qq'] neq ''">
+                                     {$data.qq} 【{$data.qq_type}】
+                                     <php>$change_url = $safe_mobile_alink['url']."/uid/".$data['uid'];</php>
+                                     <a href="javascript:;" data-title="更换手机号" data-form-id="safemobilefrom"
+                                        class="{$safe_mobile_alink['class']}"
+                                        data-url="{$change_url}" data-width="800px" data-height="600px">【更换手机号】</a>
+                                     <else/>
+                                     无
+                                 </if>
+                                 <if condition="$data['bindmac'] neq ''">
+                                     <a href="javascript:void (0)" data-title="解绑本机" data-id="{$data.uid}"
+                                        class="{$unbind_mobile_alink['class']}"
+                                        data-url="{$unbind_mobile_alink['url']}">【解绑本机】</a>
+                                 </if>-->
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <th>用户类型:</th>
+                            <td>{$data['level']}</td>
+                            <th>代理团队:</th>
+                            <td>{$data['team']}</td>
+                        </tr>
+                        <tr>
+                            <th>在线状态:</th>
+                            <td>
+                                {$data['is_online']}
+                                <a href="javascript:void (0)" data-title="强踢玩家" data-id="{$data.uid}"
+                                   class="{$kick_alink['class']}"
+                                   data-url="{$kick_alink['url']}">【强踢玩家】</a>
+                            </td>
+
+                            <th>账号状态:</th>
+                            <td class="green-a">{$data.status}</td>
+                        </tr>
+                        <tr>
+                            <th>金币:</th>
+                            <td>
+                                {$data.gold|number_format}
+                                <eq name="data.is_online" value="离线">
+                                <a href="javascript:void (0)" data-title="{$account_alink['text']}" data-id="{$data.uid}"
+                                   class="{$account_alink['class']}"
+                                   data-url="{$account_alink['url']}">【{$account_alink['text']}】</a>
+                                </eq>
+                            </td>
+                            <th>银行:</th>
+                            <td>
+                                {$data.bank|number_format}
+                                <php>$form_id = str_replace(['/','-','_'], '',strtolower("/uid/".$data['uid']));</php>
+                                <php>$url = $edit_resource_alink['url']."/uid/".$data['uid'];</php>
+                                <a href="javascript:;" class="{$edit_resource_alink['class']}"
+                                   data-title="{$edit_resource_alink['text']}" data-form-id="{$form_id}"
+                                   data-url="{$edit_resource_alink['url']}/uid/{$data['uid']}" data-width="800px" data-height="600px">
+                                    【{$edit_resource_alink['text']}】
+                                </a>
+                                <eq name="data.is_online" value="离线">
+                                    <a href="javascript:;" class="{$edit_resource_alink['class']}"
+                                       data-title="{$bank_alink['text']}" data-form-id="{$form_id}"
+                                       data-url="{$bank_alink['url']}/uid/{$data['uid']}" data-width="800px" data-height="600px">
+                                        【{$bank_alink['text']}】
+                                    </a>
+                                </eq>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>总资产:</th>
+                            <td>{$data.total_gold|number_format}</td>
+                            <th>推广基金:</th>
+                            <td>{$data.FoundGold|number_format}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!-- 基本信息结束 -->
+
+            <!-- 交易统计 -->
+            <div class="col-lg-12 col-sm-12 col-xs-12 info_wrap">
+                <div class="col-lg-12 col-xs-12 info_wrap_title">
+                    <span class="green-a">交易统计</span>
+                </div>
+                <div class="table-responsive" style="overflow-x:visible">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>总接收:</th>
+                            <td colspan="3" ><span  class="title-red">{$data.receiveprient|number_format}</span></td>
+                        </tr>
+                        <tr>
+                            <th>从代理接收:</th>
+                            <td>{$data.take_vip|number_format}</td>
+                            <th>从普通接收:</th>
+                            <td>{$data.take_people|number_format}</td>
+                        </tr>
+                        <tr>
+                            <th>总赠送:</th>
+                            <td colspan="3" ><span  class="title-red">{$data.sendprient|number_format}</span></td>
+                        </tr>
+                        <tr>
+                            <th>向代理赠送:</th>
+                            <td>{$data.send_vip|number_format}</td>
+                            <th>向普通赠送:</th>
+                            <td>{$data.send_people|number_format}</td>
+                        </tr>
+                        <tr>
+                            <th>当日接收:</th>
+                            <td>{$data.take_day|number_format}</td>
+                            <th>当日赠送:</th>
+                            <td>{$data.send_day|number_format}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!-- 交易统计结束 -->
+
+
+            <!-- 点控 -->
+            <div class="col-lg-12 col-sm-12 col-xs-12 info_wrap">
+                <div class="col-lg-12 col-xs-12 info_wrap_title">
+                    <span class="green-a">点控统计</span>
+                </div>
+                <div class="table-responsive" style="overflow-x:visible">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>点控状态:</th>
+                            <td>
+                                <span class="title-red">{$data.point_control_status}</span>
+                                <if condition="$data['point_status'] eq 1">
+                                    <php> $url2=$cancel_point_control_alink['url']."/uid/".$data['uid']</php>
+                                    <a href="javascript:;" class="green-a btn-point_cancel_control" data-title="取消点控" data-form-id="cancelfrom" data-url="{$url2}" data-width="800px" data-height="600px">
+                                        【取消点控】
+                                    </a>
+                                </if>
+                            </td>
+                            <th>点控类型:</th>
+                            <td>{$data.point_control_type}</td>
+                        </tr>
+                        <tr>
+                            <th>点控进度:</th>
+                            <td>{$data.point_control_progress|number_format}</td>
+                            <th>点控目标:</th>
+                            <td>{$data.point_control_controlSum|number_format}</td>
+                        </tr>
+                        <tr>
+                            <th>点控开始时间:</th>
+                            <td><if condition="$data['point_control_start_time'] gt 0">{$data.point_control_start_time|date='Y-m-d H:i:s',###}</if></td>
+                            <th>点控结束时间:</th>
+                            <td> <if condition="$data['point_control_end_time'] gt 0">{$data.point_control_end_time|date='Y-m-d H:i:s',###}</if></td>
+                        </tr>
+                        <tr>
+                            <th>管理员id:</th>
+                            <td colspan="3" >{$data.point_control_admin_id}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!-- 点控统计结束 -->
+
+            <!-- 输赢统计 -->
+            <div class="col-lg-12 col-sm-12 col-xs-12 info_wrap">
+                <div class="col-lg-12 col-xs-12 info_wrap_title">
+                    <span class="green-a">输赢统计</span>
+                </div>
+                <!-------------------------------------------------->
+                <div class="table-responsive" style="overflow-x:visible">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>游戏总输赢:</th>
+                            <td><span class="title-red">{$data.bunkogold|number_format}</span></td>
+                            <th>当日输赢:</th>
+                            <td>{$data.daily_gold|number_format}</td>
+                        </tr>
+                        <tr>
+                            <th>首次进入游戏:</th>
+                            <td colspan="3" >{$data.first_room}</td>
+                        </tr>
+                    </table>
+                </div>
+                <!-------------------------------------------------->
+                <!-------------------------------------------------->
+            </div>
+            <!-- 输赢统计结束 -->
+
+
+            <!-- 数据查询 -->
+            <div class="col-lg-12 col-xs-12 info_wrap">
+                <div class="col-lg-12 col-xs-12 info_wrap_title">
+                    <span class="green-a">数据查询</span>
+                </div>
+                <div class="col-lg-6 col-lg-offset-3 col-xs-12 data_sear_list text-center">
+                    <ul>
+                        <php>
+                            $send_present_url='/Admin/player/send_present?uuid='.$data["uid"];
+                        </php>
+                        <php>$point_record_url='/Admin/player/point_control?uid='.$data["uid"];</php>
+                        <li class="col-xs-12"><a href="/Admin/player/gold?uid={$data.uid}"  class="btn btn-custom" >金币变动记录</a></li>
+                        <li class="col-xs-12"><a href={$send_present_url}  class="btn btn-custom">用户交易记录</a></li>
+                        <li class="col-xs-12"><a href={$point_record_url}  class="btn btn-custom">用户点控记录</a></li>
+                        <li class="col-xs-12"><a href="/admin/player/handle_log/index?uid={$data.uid}" class="btn btn-custom">GM操作记录</a></li>
+                        <li class="col-xs-12"><a href="/admin/player/login/index?uid={$data.uid}"  class="btn btn-custom">用户登录日志</a></li>
+                        <li class="col-xs-12"><a href='/Admin/player/game_log?uid={$data.uid}'  class="btn btn-custom">用户游戏日志</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <!-- 数据查询结束 -->
+
+            <!-- 数据操作 -->
+            <div class="col-lg-12 col-xs-12 info_wrap">
+                <div class="col-lg-12 col-xs-12 info_wrap_title">
+                    <span class="green-a">数据操作</span>
+                </div>
+                <div class="col-lg-6 col-lg-offset-3 col-xs-12 data_sear_list">
+                    <ul>
+                        <php>$url = "/admin/player/point_control/add/uid/".$data['uid']; $form_id =
+                            str_replace(['/','-','_'], '',strtolower($url));
+                        </php>
+                        <li class="col-xs-12"><a href="javascript:;" data-id="{$data.uid}" data-form-id="{$form_id}"
+                                                 data-url="{$url}" data-width="41%" data-height="60%"
+                                                 class="btn btn-custom btn-point_control" data-title="设置点控">设置点控</a>
+                        </li>
+                        <li class="col-xs-12">
+                            <a style="display:none" href="javascript:;" data-direction="false"
+                               data-nickname="{$data.nickname}" class="btn btn-custom btn-is_closure"
+                               data-url="/admin/player/user/user_lock/uid/{$data.uid}" data-field="is_closure"
+                               data-value="{$data.is_closure}" data-title="账户解锁|账户锁定(封停)"></a>
+                            <a href="javascript:;" data-id="{$data.uid}" data-form-id="lockform"
+                               data-url="/admin/player/user/user_lock/uid/{$data.uid}" data-width="41%"
+                               data-height="60%" class="btn btn-custom btn-user-lock"
+                               data-title="<php>if($data['is_closure']==0) {echo '账户解锁';}else{echo '账户锁定(封停)';}</php>"
+                               id="user_lock" data-value="{$data.is_closure}">
+                                <php>if($data['is_closure']==0) {echo '账户解锁';}else{echo '账户锁定(封停)';}</php>
+                            </a>
+                        </li>
+
+                        <li class="col-xs-12"><a href="javascript:;" data-direction="false"
+                                                 data-nickname="{$data.nickname}"
+                                                 class="btn btn-custom btn-is_send_presend"
+                                                 data-url="/admin/player/user/status_set/uid/{$data.uid}"
+                                                 data-field="is_send_presend" data-value="{$data.is_send_presend}"
+                                                 data-title="允许赠送|禁止赠送"></a></li>
+
+
+                        <php>$url3 = "/admin/player/user/level_change/uid/".$data['uid'];</php>
+                        <li class="col-xs-12"><a data-title="用户类型修改" data-id="{$data.uid}" data-form-id="levelchange"
+                                                 data-url="{$url3}" data-width="41%" data-height="60%"
+                                                 class="btn btn-custom btn-customer_type">用户类型修改</a></li>
+                        <li class="col-xs-12">
+                            <php>
+                                $url = "/admin/player/user/user_sign/uid/".$data['uid'];
+                            </php>
+                            <a href="javascript:;" data-title="修改昵称/签名" data-id="{$data.uid}" data-form-id="signfrom"
+                               data-url="{$url}" data-width="41%" data-height="60%"
+                               class="btn btn-custom btn-change-sign">修改昵称/签名</a>
+                        </li>
+
+                        <li class="col-xs-12">
+                            <php>
+                                $url = "/admin/player/user/edit_pwd/uid/".$data['uid'];
+                            </php>
+                            <a href="javascript:;" data-title="编辑登录密码" data-id="{$data.uid}" data-form-id="editpwdfrom"
+                               data-url="{$url}" data-width="41%" data-height="60%"
+                               class="btn btn-custom btn-change-sign">修改登录密码</a>
+                        </li>
+
+                        <li class="col-xs-12">
+                            <php>
+                                $url = "/admin/player/user/edit_safe/uid/".$data['uid'];
+                            </php>
+                            <a href="javascript:;" data-title="编辑保险箱密码" data-id="{$data.uid}" data-form-id="editsafefrom"
+                               data-url="{$url}" data-width="41%" data-height="60%"
+                               class="btn btn-custom btn-change-sign">修改保险箱密码</a>
+                        </li>
+
+                        <li class="col-xs-12">
+                            <a href="javascript:void(0)" data-form-id="focusform"
+                               class="btn btn-custom btn-focus"
+                               data-url="/admin/player/user/focus/uid/{$data.uid}"
+                               data-width="41%"
+                               data-height="60%" >
+                                <php>if($data['is_focus']==0) {echo '设置关怀';}else{echo '取消关怀';}</php>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 数据操作结束 -->
+
+        </div>
+    </div>
+    </div>
+    <!--引入基础js文件-->
+    <script src="/Public/Admin/Cube/js/backend.js"></script>
+    <script src="/Public/Admin/Cube/js/btn.js"></script>
+    <!--设置事件绑定-->
+    <script type="text/javascript">
+        backend.select_change_bind('.select-change', {$data['levels']});
+        backend.confirm_bind('.btn-unbind_mobile','您确定解除手机绑定吗？');
+        backend.confirm_bind('.btn-kick','您确定强踢玩家吗？');
+        backend.confirm_bind('.btn-account','您确定转到银行吗？');
+
+
+        backend.status_set(".btn-is_send_presend");
+
+        backend.layer_bind('.btn-focus');
+        backend.layer_bind('.btn-edit_resource');
+        backend.layer_bind('.btn-change_mobile');
+        backend.layer_bind('.btn-bind_mobile');
+        backend.layer_bind('.btn-lock');
+        backend.layer_bind('.btn-point_control');
+        backend.layer_bind('.btn-customer_type');
+        backend.layer_bind('.btn-change-sign');
+        backend.layer_bind('.btn-user-lock');
+        backend.layer_bind('.btn-point_cancel_control');
+        backend.layer_bind('.btn-bank');
+    </script>
+
+</block>

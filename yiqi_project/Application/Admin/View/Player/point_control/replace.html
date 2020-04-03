@@ -1,0 +1,75 @@
+<div id="replace-tpl">
+
+	<div class=" tool-body col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="row total-list">
+			<ul>
+				<li><label>点控记录条数: </label><span>{$count|number_format}</span></li>
+				<li><label>控赢金币总数: </label><span class="title-red">{$count_win|number_format}</span></li>
+				<li><label>控输金币总数: </label><span class="title-red">{$count_lose|number_format}</span></li>
+			</ul>
+		</div>
+	</div>
+
+	
+	<div class="table-responsive" style="overflow-x:visible;" >
+	 <table class="table table-striped table-hover">
+		 <thead>
+		 <tr>
+			 <th>用户ID</th>
+			 <th>用户昵称</th>
+			 <!-- <th>用户类型</th> -->
+			 <th>管理员</th>
+			 <th>点控开始时间</th>
+			 <th>点控时总输赢</th>
+			 <th>用户总输赢</th>
+			 <th>当前进度</th>
+			 <th>点控目标</th>
+			 <th>使用方案</th>
+			 <th>完成时间（已完成的默认排序到下方）</th>
+		 </tr>
+		 </thead>
+		 <tbody>
+		 <volist name="data" id="vo">
+			 <php>if($vo['type']==0){
+				 echo "
+				 <tr class='green'>";
+					 }else{
+					 echo "
+				 <tr class='red'>";
+					 }
+			 </php>
+			 <td><a href="/admin/player/user/detail/uid/{$vo.uid}">{$vo['uid']}</a></td>
+			 <td>{$vo['nickname']}</td>
+			 <!--	 <td>{$vo['level']}</td>-->
+			 <td>{$vo['staffId']}</td>
+			 <td>{$vo['createtime']}</td>
+			 <td>{$vo['totalWin']}</td>
+			 <td>{$vo['bunkogold']}</td>
+			 <php>$n=sprintf("%01.2f", $vo['progress']/$vo['controlSum']*100).'%';</php>
+			 <td>{$vo['progress']|number_format}({$n})</td>
+			 <td>{$vo['controlSum']|number_format}</td>
+			 <td>{$vo['plan']}</td>
+
+			 <td>
+				 <if condition="$vo['status'] eq 0 ">
+					 已取消(操作员：{$vo['deleteStaff']}）<a href='javascript:void (0)'
+													 onclick='view_btn("点控取消原因","point_control/reason?id={$vo.id}","canselreason","point_control/reason")'>【查看原因】</a>
+					 <elseif condition="$vo['status'] eq 1"/>
+					 未完成
+					 <else/>
+					 {$vo['endtime']}
+				 </if>
+
+			 </td>
+			 </tr>
+		 </volist>
+
+		 </tbody>
+	 </table>
+	</div>
+	<div class="col-lg-12 col-xs-12 text-center">
+		<ul class="pagination">
+			{$page}
+		</ul>
+	</div>
+</div>	

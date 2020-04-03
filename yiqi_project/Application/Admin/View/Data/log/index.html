@@ -1,0 +1,45 @@
+<include file="Public/header"/>
+<div class="panle panle-bg online-count">
+    <include file="Public/page_title"/>
+    <div class="panel-body">
+        <div class="continar-fluid tool-body-wrap">
+            <div class="row">
+                <div class=" tool-body col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                    <!-- 顶部右侧搜索 -->
+                    <div class="tool-right col-lg-12 col-md-12 col-xs-12 text-right pad0">
+                        <form id="searForm" class="form-horizontal">
+                            <div class="pull-right">
+                                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <label class="control-label control-label-title col-lg-2 col-md-2 col-sm-2 col-xs-12">时间:</label>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                        <input name="startTime" class="form-control form-control-extend Wdate" type="text" id="Beginday"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd' ,maxDate:'#F{ $dp.$D(\'Endday\')||\'%y-%M-{ %d-1 }\' }',readOnly:true})" placeholder="开始时间"/>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                        <input name="stopTime" class="form-control form-control-extend Wdate" type="text" id="Endday" onclick="WdatePicker({dateFmt:'yyyy-MM-dd' ,minDate:'#F{ $dp.$D(\'Beginday\') }',maxDate:'%y-%M-{ %d}',readOnly:true})" placeholder="结束时间"/>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-center marg-tp10">
+                                        <button id="sear" type="button" class="btn btn-custom" style="padding:.5rem 2rem;">搜索</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- 搜索结束 -->
+                </div>
+            </div>
+        </div>
+        <div id="replace-tpl"></div>
+    </div>
+</div>
+<script src="__JS__/data.js"></script>
+<script src="__JS__/btn.js"></script>
+<script type="text/javascript">
+   $(function () {
+       getData('log/index','','日登录量统计','登录量（人）','登录量');
+   })
+    $('#sear').click(function () {
+        getData('log/index',$('#searForm').serialize(),'日登录量统计','登录量（人）','登录量');
+    })
+</script>
+<include file="Public/footer"/>
+

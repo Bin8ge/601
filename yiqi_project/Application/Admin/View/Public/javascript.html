@@ -1,0 +1,21 @@
+<!--后台公共js-->
+<script src="__JS__/backend.js"></script>
+
+<!--Bootstrap-table 配置-->
+<script src="__JS__/table.js"></script>
+
+<!--获取不同的控制器 js-->
+<php>$controller = strtolower(CONTROLLER_NAME);</php>
+<script src="__JS__/backend/{$controller}.js"></script>
+
+
+<!--初始化基本配置信息-->
+<script type="text/javascript">
+    var Config = JSON.parse('{$config}');
+    var tableconfig = Controller.index();
+
+    //将搜索按钮绑定到搜索事件上
+    backend.search_bind("#serachButton");
+    //绑定回车事件
+    backend.keydown_bind(".keydown", "#serachButton");
+</script>

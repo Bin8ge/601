@@ -1,0 +1,88 @@
+<include file="Public/header"/>
+<div class="panle panle-bg">
+    <div class="panel-heading panel-head-bg">
+        <a class="panle-title">当日交易列表</a>
+    </div>
+    <div class="panel-body trade-list">
+        <!-- 顶部搜索部分 -->
+        <div class="table-search">
+            <form id="searForm" class="form-horizontal" action="" method="post">
+                <div class="row marg0">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 col-lg-6-1300">
+                        <label class="control-label control-label-title col-xs-5 col-lg-3">用户ID:</label>
+                        <div class="col-xs-7 col-lg-9">
+                            <input type="text" class="form-control form-control-extend" id="" name="uid" placeholder="用户推广号" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-12 col-md-8 col-lg-5 col-lg-6-1300">
+                        <label class="control-label control-label-title col-lg-3 col-md-2 col-sm-2 col-xs-12">交易时间:</label>
+                        <div class="col-lg-4 col-md-5 col-sm-4 col-xs-6">
+                            <input name="starttime" class="form-control form-control-extend Wdate" type="text" id="Beginday"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:00:00' ,maxDate:'#F{ $dp.$D(\'Endday\')||\'%y-%M-%d\'}',readOnly:true})" placeholder="开始时间"/>
+                        </div>
+                        <div class="col-lg-4 col-md-5 col-sm-4 col-xs-6 pad0">
+                            <input name="stoptime" class="form-control form-control-extend Wdate" type="text" id="Endday" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:00:00' ,minDate:'#F{ $dp.$D(\'Beginday\')}',maxDate:'%y-%M-%d',readOnly:true})" placeholder="结束时间"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-4 col-lg-6-1300">
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-custom" style="padding:.4rem 2rem;" onclick="indexAjaxComm(1,'trading/index',$('#searForm').serialize())">开始查询</button>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="hidden" id="field" name="field" value="a.uid">
+                <input type="hidden" id="order" name="order" value="asc">
+            </form>
+        </div>
+        <!-- 搜索结束 -->
+
+
+        <!-- 顶部功能区（搜索） -->
+        <div class="tool-body col-lg-12 col-xs-12">
+            <!-- 顶部统计区 -->
+            <!--  顶部统计区结束 -->
+            <div class="tool-right col-lg-1 col-md-3 col-xs-4 text-right pad0">
+                <div class="col-lg-12 col-md-6 col-sm-5 col-xs-12 pad0">
+                    <button id="searBtn" class="btn btn-reset" type="button" title="普通搜索">
+                        <i class="glyphicon glyphicon-search hidden-xs"></i> &nbsp;搜索
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- 顶部功能区结束 -->
+
+        <!-- 内容列表区 -->
+        <div id="replace-tpl"></div>
+        <!-- 内容列表区结束 -->
+
+
+
+    </div>
+</div>
+
+<script src="__JS__/btn.js"></script>
+<include file="Public/footer"/>
+<script>
+    $(function(){
+        var param=GetQueryString('uid');
+        //alert(param)
+        init("trading/index",param);     //初始化页面
+    });
+    function order(field,order) {
+        indexAjaxComm(1,'trading',$('#searForm').serialize()+"&field="+field+'&order='+order);
+        if (order == 'asc')
+        {
+            $('#'+field).attr('name','desc');
+            $('#'+field).after("<span style='float: right;color: #18bc9c'>▲</span>");
+        }else{
+            $('#'+field).attr('name','asc');
+            $('#'+field).after("<span style='float: right;color: #18bc9c'>▼</span>");
+        }
+        $("#field").val(field);
+        $("#order").val(order);
+    }
+
+</script>
+

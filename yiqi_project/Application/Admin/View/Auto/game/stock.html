@@ -1,0 +1,79 @@
+<include file="Public/header"/>
+<div class="panle panle-bg online-count">
+    <div class="panel-heading panel-head-bg">
+        <a class="panle-title">{$breadcrumb[1]['name']}</a>
+        <span class="col-sm-6 col-xs-6 pull-right"><button type="button" class="close" aria-hidden="true" onclick="javascript:history.back(-1)">&times;</button></span>
+    </div>
+    <div class="panel-body">
+
+        <div class="table-search" style="display:block">
+            <!-- tab -->
+            <ul id="myTab" class="nav nav-tabs">
+                <li class="active">
+                    <a href="#" data-toggle="tab" onclick="tabBtn('public')" >
+                        公共库存
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="tab" onclick="tabBtn('jackpot')">
+                        奖池库存
+                    </a>
+                </li>
+            </ul>
+            <!-- ./tab -->
+        </div>
+
+        <div class="continar-fluid tool-body-wrap">
+            <div class="row marg0">
+                <div class=" tool-body col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                    <!-- 顶部右侧搜索 -->
+                    <div class="tool-right col-lg-12 col-md-12 col-xs-12 text-right pad0">
+                        <form id="searForm" class="form-horizontal" action="" method="post">
+                            <div class="row pull-left">
+                                <div class="col-lg-12 col-md-8 col-sm-8">
+                                    <h4>{$game_info}</h4>
+                                </div>
+
+                            </div>
+                            <div class="row pull-right">
+                                <div class="form-group col-lg-12 col-md-8 col-sm-8">
+                                    <label class="control-label control-label-title col-lg-1 col-md-2 col-sm-2 col-xs-12">时间:</label>
+                                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
+                                        <input name="startTime" class="form-control form-control-extend Wdate" type="text" id="Beginday"  onclick="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd HH' ,readOnly:true})" placeholder="开始时间"/>
+                                    </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
+                                        <input name="endTime" class="form-control form-control-extend Wdate" type="text" id="Endday" onclick="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd HH' ,maxDate:'%y-%M-{%d} 23',readOnly:true})" placeholder="结束时间"/>
+                                    </div>
+                                    <input type="hidden" name="action" id="action" value="public" >
+                                    <input type="hidden" name="machine_id" value="{$machine_id}"  value="public" >
+                                    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-5 text-left">
+                                        <button id="sear" type="button" class="btn btn-custom" style="padding:.5rem 2rem;">搜索</button>
+                                        <button  type="button" class="btn btn-info-lg" style="padding:.5rem 2rem;" onclick="add_btn('增加库存','add?machine_id={$machine_id}&','add-form','add')">增加库存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- 搜索结束 -->
+                </div>
+            </div>
+        </div>
+        <div id="replace-tpl"></div>
+    </div>
+</div>
+<include file="Public/footer"/>
+
+<script src="__JS__/data.js"></script>
+<script type="text/javascript">
+    $(function () {
+        getDatas(1,'stock?machine_id={$machine_id}',{$benchmark});
+    })
+    $('#sear').click(function () {
+        getDatas(1,'stock',{$benchmark});
+    })
+    function tabBtn(action) {
+         $('#action').val(action);
+        getDatas(1,'stock',{$benchmark});
+    }
+</script>
+

@@ -1,0 +1,64 @@
+<!-- 顶部导航栏部分 -->
+<div class="navbar nav_bg">
+    <div class="container-fluid">
+        <div class="col-xs-12 col-sm-12 col-lg-12 navbar-header nav-header-xs">
+
+            <!-- 大屏幕下左侧部分-->
+            <div class="navbar-brand nav-title visible-lg">
+                <!-- <small class=" hidden-xs glyphicon glyphicon-fire"> 后台管理系统</small> -->
+				<small class="hidden-xs"> <a id="toggleBtn" href="#" style="color:#fff;margin-right:15px;"><i class="fa fa-bars" aria-hidden="true"></i></a>601后台管理系统</small> <span style="margin-left:25px;"></span>
+            </div>
+            <!--  大屏幕下左侧结束 -->
+
+			<!-- 大屏幕下顶部导航栏右侧部分 -->
+            <ul class="nav navbar-nav nav-stacked navbar-right visible-lg" style="float: right;text-align: right;">
+              <li>
+                <a href="#" data-toggle="dropdown">
+                    <img class="img-circle" src="{$admin['avatar']}"/>
+                    <small class="font-col hidden-xs hidden-sm">Welcome</small>
+                    <span class="font-col hidden-xs hidden-sm">{$admin['username']}</span>
+                    <span class="caret font-col"></span>
+                </a>
+                <ul class="nav nav-pills nav-stacked dropdown-menu">
+                    <li class="exit-login">
+                        <a href="/admin/index/logout" style="color:#fff;">
+                            <span class="glyphicon glyphicon-log-out gly-color"></span>
+                            退出登录
+                        </a>
+                    </li>
+                </ul>
+              </li>
+           </ul>
+          <!-- 大屏幕下顶部导航栏右侧结束 -->
+			
+			
+         <!-- 响应式导航栏 -->
+            <php>if(isMobile()):</php>
+			   <small class="col-xs-6 col-sm-6 col-md-6 hidden-lg header-nav-l"> <a href="#main_menu" title="菜单"><span class="glyphicon glyphicon-menu-hamburger"></span></a> </small>
+                <div class="col-xs-6 col-sm-6 col-md-6 hidden-lg" style="float: right;text-align: right;padding-right:0;margin-right:0;">
+                    <ul class="nav navbar-nav nav-stacked navbar-right navbar-xs" style="float: right;text-align: right;">
+                        <li>
+                            <a href="#" data-toggle="dropdown">
+                                <img class="img-circle" src="{$admin['avatar']}"/>
+                                <small class="font-col hidden-xs hidden-sm">Welcome</small>
+                                <span class="font-col hidden-xs hidden-sm">{$admin['username']}</span>
+                                <span class="caret font-col"></span>
+                            </a>
+                            <ul class="nav nav-pills nav-stacked dropdown-menu">
+                                <li class="exit-login">
+                                    <a href="/admin/index/logout" style="color:#fff;">
+                                        <span class="glyphicon glyphicon-log-out gly-color"></span>
+                                        退出登录
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+            <php>endif;</php>
+         <!-- 响应式导航栏结束 -->
+        </div>
+    </div>
+</div>
+<!--  顶部导航栏结束 -->

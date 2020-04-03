@@ -1,0 +1,35 @@
+<include file="Public/header"/>
+<div class="panle panle-bg">
+    <include file="Public/page_title"/>
+    <div class="panel-body auto-control">
+        <!-- 内容列表区 -->
+        <div id="replace-tpl"></div>
+    </div>
+</div>
+
+<include file="Public/footer"/>
+<script type="text/javascript">
+    $(function () {
+        indexAjaxComm(1, 'room/index');
+    })
+
+    function editSub(obj,id) {
+        var NeedGold       = $(obj).parent().parent().find($("input[name='NeedGold']")).val()
+        var public_stock   = $(obj).parent().parent().find($("input[name='public_stock']")).val()
+        var jackpot_stock = $(obj).parent().parent().find($("input[name='jackpot_stock']")).val()
+        var tax_stock = $(obj).parent().parent().find($("input[name='tax_stock']")).val()
+        var data = {id:id,NeedGold:NeedGold,public_stock:public_stock,jackpot_stock:jackpot_stock,tax_stock:tax_stock};
+        ajaxComm('room/edit',data);
+    }
+
+    function editSwitch(productId,is_open) {
+        layer.confirm('确定要进行开关房间操作！！！', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            var data = {productId:productId,is_open:is_open};
+            ajaxComm('room/switch',data,'/Admin/auto/room');
+        }, function(){
+            layer.msg('谢谢提醒喔');
+        })
+    }
+</script>

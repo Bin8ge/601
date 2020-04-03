@@ -1,0 +1,38 @@
+<extend name="Public/window_base"/>
+<block name="body">
+<div class="modal-body cancle-point">
+    <form class="form"  role="form"  id="bindemobilefrom">
+        <div class="form-group">
+            <label class="control-label col-xs-4 col-sm-2 title-right">用户ID：</label>
+            <div class="col-xs-6 col-sm-8">
+                <p class="form-control-static">{$data['uid']}</p>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-4 col-sm-2 title-right">用户昵称：</label>
+            <div class="col-xs-6 col-sm-8">
+                <p class="form-control-static">{$data['nickname']}</p>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">绑定手机号:</label>
+            <div class="col-xs-12 col-sm-8">
+                <input type="text" class="form-control form-control-extend" name="mobile[mobile]" value=""/>
+            </div>
+        </div>
+
+    </form>
+</div>
+    <script type="text/javascript">
+        //调用表单验证
+        //console.log(("{:strtolower(str_replace(['/','-','_'],'',$form_id))}", '{$selfUrl}', '{$fromValidate}',1));
+        backend.form_validate("{:strtolower(str_replace(['/','-','_'],'',$form_id))}", '{$selfUrl}', '{$fromValidate}',1);
+    </script>
+</block>

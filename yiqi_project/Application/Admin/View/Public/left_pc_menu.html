@@ -1,0 +1,31 @@
+<div class="col-lg-menu hidden-xs hidden-sm left-menu">
+    <div id="menu_left">
+        <div class="panel-group" id="box">
+            <foreach name="sidebar" item="val">
+                <div class="panel panel-extend">
+                    <div class="panel-heading">
+                        <if condition="$val['childlist']">
+                            <a href="#{$val.py}" data-parent="#box" data-toggle="collapse" class="panel-title"><i class="fa {$val.icon} fa-sty"></i>{$val.name}<span class="glyphicon {$val.select} add"></span></a>
+                        <else />
+                            <a href="{$val.url}" class="panel-title"><i class="fa {$val.icon} fa-sty"></i>{$val.name}<span class="glyphicon {$val.select} add"></span></a>
+                        </if>
+                    </div>
+                    <if condition="$val['childlist']">
+                    <div class="panel-collapse collapse {$val.open}" id="{$val.py}">
+                        <div class="panel-body">
+                            <ul class="nav nav-pills nav-stacked submeu">
+                            <foreach name="val['childlist']" item="val1">
+                                <li class="submeu-li">
+                                    <a href="{$val1.url}"><i class="fa {$val1.icon} fa-sty"></i>{$val1.name}</a>
+                                </li>
+                            </foreach>
+                            </ul>
+                        </div>
+                    </div>
+                    </if>
+
+                </div>
+            </foreach>
+        </div>
+    </div>
+</div>

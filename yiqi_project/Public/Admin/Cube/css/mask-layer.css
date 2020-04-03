@@ -1,0 +1,527 @@
+@charset "utf-8";
+@media screen and (max-width: 767px){
+	body{
+		font-size:1.2rem;
+	}
+}
+@media screen and (min-width: 768px){
+	body{
+		font-size:1.2rem;
+	}
+}		
+	
+@media (max-width: 992px){
+	.text-center-small{
+		text-align:center;
+	}
+}
+.edit-pass{
+	margin:.5rem 1rem;
+	background:#2c3e50;
+	border-radius:1rem;
+	color:#fff;
+}
+.edit-pass a {
+	color:#fff;
+}
+@media (max-width: 767px){
+	
+    table td,td>span{
+		word-break: keep-all;
+		white-space:nowrap;
+		}
+	table tr td{
+		word-break: keep-all;
+		white-space:nowrap;
+	}
+}
+/* 通用部分 */
+.pad0{
+	padding:0;
+}
+.marg0{
+	margin:0;
+}
+.mar-bt{
+	margin-bottom:1rem;
+}
+.mar-r{
+	margin-right:1rem;
+}
+.marg-left{
+	margin-left:.4rem;
+}
+
+.title-red{
+	color:red;
+	font-size:1.2rem;
+}
+.tip-text{
+	color:red;
+	text-align:left;
+	height:3rem;
+	line-height:3rem;
+}		
+ table tr,td,th{
+   border:.1rem solid #eee;
+   text-align:center;
+   vertical-align:middle !important; 
+  }
+.title-right{
+	 text-align:right;
+	 font-weight:500;
+	 padding-top:1rem;
+	 font-size:1.3rem;
+ }
+.point-title-right{
+	text-align:right;
+	font-weight:500;
+	/* padding-top:1rem; */
+	font-size:1.3rem;
+} 
+.tool-right{
+  float:right;
+}
+.table-search{
+display:none;
+border-bottom:.1rem solid #eee;
+margin-bottom:1rem;
+}	
+
+.control-label-title{
+	text-align:right;
+	vertical-align:middle;
+	height:3rem;
+	font-weight:500;
+	font-size:1.4rem;
+}
+/* layer插件样式修改 */
+body.layui-layer-title{
+	background-color:#222d32;
+	color:#fff;
+}
+.layui-layer-btn{
+	background: #f8f8f8 !important;
+    text-align: right;
+    padding: 0 15px 12px;
+    pointer-events: auto;
+    user-select: none;
+    -webkit-user-select: none;
+	margin-top:1rem;
+}
+
+.btn-pad{
+	 padding:1rem 2rem;
+ }
+.btn-mar-r{
+	 margin-right:4rem;
+ }
+.btn-mar-r2{
+	 margin-right:3rem;
+ }
+.data_sear_list ul li {
+	 float:left; 
+	 width:13rem;
+	 height:6rem;
+	 line-height:5rem;	
+ }
+.data_sear_list ul li a {
+	 width:100%;
+ }
+.select-form{
+	width:45%;
+	display:inline;
+	height:2.5rem;
+	line-height:2.5rem;
+	padding:0 1rem;
+	margin-bottom:.5rem;
+} 
+.input-custom{
+	/* display:inline-table; */
+	height:2.5rem;
+	line-height:2.5rem;
+	border-radius:0;
+	border:.1rem solid #ccc;
+	text-indent:1rem;
+	text-align:left;
+	font-size:1.3rem;
+}
+.input-control{
+	display:block;
+	width:100%;
+	box-shadow:none;
+	border:.1rem solid #ccc;
+	padding:.6rem 1.2rem;
+	height:3rem;
+	line-height:3rem;
+	text-align:left;
+	border-radius:0;
+	font-size:1.2rem;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+    appearance:none;
+}
+.form-control-extend{
+	box-shadow:none;
+	border-radius:0;
+	text-align:left;
+}
+
+@media (min-width: 768px){
+	.table-responsive {
+		width: 100%;
+		margin-bottom: 15px;
+		overflow-y: hidden;
+	}
+	.title-left-xs{
+	text-align:left !important;
+}
+	.data_sear_list ul li{
+	 float:left; 
+	 width:13rem;
+	 height:6rem;
+	 line-height:6rem;
+     margin:0 1rem;	 
+ }
+  .data_sear_list ul li a {
+	 width:13rem;
+ }
+	
+}
+
+@media screen and (max-width: 767px){
+.data_sear_list ul{
+	margin:2rem auto;
+	padding:0 2rem;
+}	 
+.data_sear_list ul li{
+	 float:left; 
+	 width:100%;
+	 height:6rem;
+	 line-height:6rem;	
+ }
+.data_sear_list ul li a {
+	text-align:center;
+	display:block;
+	width:100%;
+ }
+.form-group label{	
+  text-align:left;
+ }
+.control-label-title-xs{
+	height:0;
+} 
+.tip-text{
+	 color:red;
+	 line-height:1.5rem !important;
+}
+.mar-bt-xs{
+	margin-bottom:1rem;
+}
+.xs_pd0{
+	padding:0;
+}
+.search-result .title{
+    padding:1rem 0;
+	text-align:left !important;
+	font-size:1.6rem;
+}
+.type-example ul li > span button{
+   margin-bottom:.5rem;
+}
+.search-out{
+	text-align:center;
+}
+  	
+.layui-layer-iframe{
+	width:99% !important;
+	height:70% !important;
+	overflow-y:auto;
+	overflow-x:hidden;
+	margin:1rem;
+	
+}
+.title-left-xs{
+	text-align:left !important;
+}
+
+.cancle-point p{
+	color:#ff6600;
+	text-align:center;
+	font-size:1.6rem;
+	padding:1rem 0;
+}
+.table-responsive{
+	border:0rem solid #fff;
+}
+
+/* 玩家登录记录 */
+.player-login-record .date-select{
+	text-align:right;
+	padding:.5rem 0;
+}
+.player-login-record .date-select select{
+	width:4rem;
+	height:2.7rem;
+	border:1px solid #ddd;
+	border-radius:.4rem;
+}
+
+.lock-record .date-select{
+	text-align:right;
+	padding:.5rem 0;
+}
+.horse-race-lamp button{
+	padding:.5rem 1rem;
+	font-size:1rem;
+}
+.game-bulletin button{
+	padding:.5rem 1rem;
+	font-size:1rem;
+}
+ }
+ 
+@media (min-width: 1200px){
+   .data_sear_list ul li{
+	 float:left; 
+	 width:13rem;
+	 height:6rem;
+	 line-height:6rem;
+     margin:0 1rem;	 
+ }
+  .data_sear_list ul li a {
+	 width:13rem;
+ }
+ 
+.form-group label {
+    text-align: right !important;
+ }
+.type-example ul li > span{
+   padding:0 .5rem;
+   width:4%;
+} 
+ }
+
+@media screen and(min-width: 992px){
+.form-group label{
+	text-align:right !important;
+}	
+}
+
+/* 搜索用户 */
+#searUserTable td b{
+	font-size:1.4rem;
+}
+
+.player-manage .label-pt{
+	padding-top:.5rem;
+}
+.player-manage .btn-operate{
+	text-align:center;
+	margin-bottom:1rem;
+}
+.player-manage .btn-operate button{
+	 padding:.5rem 3rem;
+ }
+.player-manage .btn-operate button .mar-r{
+	 padding:.5rem 3rem;
+	 margin-right:2rem;
+ } 
+
+.type-example{
+	margin-bottom:1rem;
+}
+.type-example ul{
+	padding:0;
+	margin:0;
+}
+.type-example ul li{
+	padding:.5rem 1rem;
+}
+.type-example ul li span{
+   padding:0 .5rem;
+}
+
+.edit-resource .form-control-static{
+	padding-top:1.2rem;
+}
+/* 锁定用户弹框内容 */
+.lock-user label{
+	font-weight:600;
+}
+.lock-user p{
+	height:3rem;
+	line-height:3rem;
+}
+
+.gist-content ul li{
+	float:left;
+	padding:2rem 1rem;
+	display:inline-block;
+	font-size:1.6rem;
+}
+.lock-record .date-select select{
+	width:4rem;
+	height:2.7rem;
+	border:1px solid #ddd;
+	border-radius:.4rem;
+}
+.state-label{
+	text-align:right;
+	font-weight:500;
+	padding-top:.3rem;
+	padding-top:0\9;
+	font-size:1.3rem;
+}
+
+/* 用户点控操作 */
+.point-operate p.form-control-static{
+	padding-top:1.2rem;
+}
+/* 添加公告>选择文件按钮样式处理 */
+.file {
+    position: relative;
+    /* display: inline-block; */
+    /* background:#18bc9c; */
+    /* border: 1px solid #18bc9c; */
+    padding: 2px 4px;
+    /* overflow: hidden; */
+    text-decoration: none;
+	/* text-align:center; */
+    /* text-indent: 1.5rem; */
+    line-height:30px;
+    /* border-radius: 4px; */
+    color: #18bc9c;
+    font-size: 1.3rem;
+	font-weight:bold;
+}
+.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+	cursor:pointer;
+}
+.file:hover {
+  text-decoration:none;
+}
+.add-notice .showFileName1{
+	line-height:1.5rem;
+}
+.fileerrorTip1{
+	font-size:1.2rem;
+}
+/* 增加限制 */
+.nav-tabs > li{
+	font-size:1.2rem;
+}
+.add-limit .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+	background-color:#18bc9c;
+	border:.1rem solid #18bc9c;
+	color:#fff;
+	cursor:pointer;
+	border-bottom-color:transparent;
+}
+.add-limit table td{
+	font-size:1.2rem;
+}
+/* 联系我们>查看玩家填写的标题内容 */
+.title-content .problem-desc{
+	background-color:#f5f5f5;
+	border-bottom:1px solid #ddd;
+	height:50rem;
+	overflow-y:auto;
+}
+.title-content .problem-desc label{
+	font-size:1.3rem;
+	font-weight:500;
+	border-radius: 10px;
+	padding: 6px 12px;
+	margin: 1rem 0 .2rem 0;
+	color: #666;
+}
+@media (max-width: 767px){
+  .title-content .problem-desc textarea{
+	margin-left: 0 !important;
+}
+}
+.problem-desc p.form-control-static{
+	/* width:50%; */
+	overflow:auto;
+	background:#fff;
+	border: none;
+	border-radius:4px;
+	margin-left: 1rem;
+	margin-right:1rem;
+	padding: 1rem;
+}
+.problem-desc .user p.form-control-static{
+	width:50%;
+	overflow:auto;
+	background:#fff;
+	border: none;
+	border-radius:4px;
+	margin-left: 1rem;
+	margin-right:1rem;
+	padding: 1rem;
+}
+.problem-desc .customer-service p.form-control-static{
+	/* width:50%; */
+	overflow:auto;
+	background:#fff;
+	border: none;
+	border-radius:4px;
+	margin-left: 1rem;
+	margin-right:1rem;
+	padding: 1rem;
+	text-align:left;
+}
+
+.title-content .reply label{
+	text-align:left !important;
+	font-size:1.6rem;
+	font-weight:500;
+	color:#666;
+}
+.title-content .reply textarea{
+	resize:none;
+	border-left:none;
+	border-right:none;
+	border-bottom:none;
+	outline:none;
+	box-shadow:none !important;
+	overflow:auto;
+	border-color:#fff;
+}
+*:focus { 
+outline: none;
+box-shadow:none;
+ } 
+ /* 变更名次 */
+.change-rank .form-control-static{
+	 padding-top:1.2rem;
+ }
+.change-rank label.title-red{
+	font-size:1.2rem;
+}
+ /* 用户管理>玩家列表>玩家详情>用户类型更改>添加新团队 */
+.edit-customer-form{
+	display:none;
+	border:1px solid #eee;
+	padding:1.5rem;
+	margin-top:1rem;
+}
+.form-control-static{
+	font-size:1.2rem;
+	padding-top:1rem;
+}
+.state-switch label{
+	font-size:1.2rem;
+	font-weight:500;
+}
+/* 发送邮件 */
+.send-email p.title-red{
+	font-size:1.2rem;
+	margin-top:.5rem;
+}

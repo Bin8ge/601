@@ -1,0 +1,63 @@
+<include file="Public/window_header"/>
+<body style="overflow-y:auto">
+<div class="modal-body add-notice">
+    <form class="form" role="form" action="" method="post" id="edit-from">
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">跑马灯类型：</label>
+            <div class="col-xs-12 col-sm-8">
+                <select name="type" class="form-control form-control-extend">
+                    <option <eq name="list.type" value="0">selected</eq> value="0">正常跑马灯</option>
+                    <option <eq name="list.type" value="100">selected</eq> value="100">所有人弹板</option>
+                    <option <eq name="list.type" value="200">selected</eq> value="200">VIP弹板</option>
+                    <option <eq name="list.type" value="300">selected</eq> value="300">玩家弹板</option>
+                </select>
+
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">跑马灯内容：</label>
+            <div class="col-xs-12 col-sm-8">
+                <textarea name="content" class="form-control form-control-extend" rows="5">{$list.content}</textarea>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-sm-2 col-xs-12 title-right">起止时间：</label>
+            <div class=" col-sm-4 col-xs-6">
+                <input name="startTime" value="{$list.startTime}" class="form-control form-control-extend Wdate" type="text" id="Beginday"  onclick="WdatePicker({ dateFmt:'yyyy-MM-dd 00:00:00' ,maxDate:'#F{ $dp.$D(\'Endday\')||\'%y-{%M+2}-%d\'}',readOnly:true })" placeholder="开始时间"/>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+                <input name="endTime" value="{$list.endTime}" class="form-control form-control-extend Wdate" type="text" id="Endday" onclick="WdatePicker({ dateFmt:'yyyy-MM-dd 00:00:00' ,minDate:'#F{ $dp.$D(\'Beginday\') }',readOnly:true })" placeholder="结束时间"/>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-3 col-sm-2 title-right">播放间隔：</label>
+            <div class="col-xs-8 col-sm-8">
+                <input name="interval" type="number" min="0" class="form-control form-control-extend" value="{$list.interval}" placeholder="以秒为单位"/>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-3 col-sm-2 title-right">重复次数：</label>
+            <div class="col-xs-8 col-sm-8">
+                <input name="repeatTime" type="number" min="-1" class="form-control form-control-extend" value="{$list.repeatTime}" placeholder="-1为无限次播放"/>
+            </div>
+        </div>
+        <input type="hidden" name="dataid" value="{$list.id}">
+        <div class="clearfix"></div>
+        <br>
+        <!-- <hr> -->
+        <!-- <div class="form-group text-center" style="text-align:center"> -->
+        <!-- <button class="btn btn-custom">保存</button> -->
+        <!-- <button class="btn btn-reset">取消</button> -->
+        <!-- </div>		   -->
+    </form>
+</div>
+</body>
+</html>

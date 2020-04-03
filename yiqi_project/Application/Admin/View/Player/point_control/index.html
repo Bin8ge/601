@@ -1,0 +1,135 @@
+<include file="Public/header"/>
+<div class="panle panle-bg">
+    <div class="panel-heading panel-head-bg">
+		<a class="panel-title">{$breadcrumb[1]['name']}</a>
+		<span id="back"><input type="button" class="btn btn-custom"
+							   value="返回" onclick="javascript:history.back(-1)"
+							   style="padding:.3rem 1.2rem;float:right"></span>
+	</div>
+    <div class="panel-body player-list">
+
+	 <!-- 顶部搜索部分 -->
+		<div class="table-search">
+			<form id="searForm" class="form-horizontal" action="" method="post">
+				<div class="row marg0">
+					<div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 col-lg-4-1300">
+						<label class="control-label control-label-title col-xs-4">用户ID:</label>
+						<div class="col-xs-8">
+							<input type="text" class="form-control form-control-extend" value="{$uid}" name="uid"
+								   placeholder="用户ID"/>
+						</div>
+					</div>
+					<div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 col-lg-4-1300">
+						<label class="control-label control-label-title col-xs-4">管理员ID:</label>
+						<div class="col-xs-8">
+							<input type="text" class="form-control form-control-extend" name="staff_id"
+								   placeholder="请填写数字"/>
+						</div>
+					</div>
+					<div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 col-lg-4-1300">
+						<label class="control-label control-label-title col-xs-4">点控状态:</label>
+						<div class="col-xs-8">
+							<select class="form-control form-control-extend" name="point_control">
+								<option value>
+									全部
+								</option>
+								<option value="0">
+									取消点控
+								</option>
+								<option value="1">
+									点控中
+								</option>
+								<option value="2">
+									已完成
+								</option>
+
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 col-lg-4-1300">
+						<label class="control-label control-label-title col-xs-4">点控类型:</label>
+						<div class="col-xs-8">
+							<select class="form-control form-control-extend" name="point_control_type">
+								<option value>
+									全部
+								</option>
+								<option value="0">
+									控赢
+								</option>
+								<option value="1">
+									控输
+								</option>
+
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 col-lg-4-1300">
+						<label class="control-label control-label-title col-xs-4">点控时总输赢:</label>
+						<div class="col-xs-8">
+							<select class="form-control form-control-extend" name="totalWin">
+								<option >
+									全部
+								</option>
+								<option value="0">
+									赢
+								</option>
+								<option value="1">
+									输
+								</option>
+
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-xs-12 col-sm-12 col-md-8 col-lg-6 col-lg-8-1300">
+						<label class="control-label control-label-title col-lg-2 col-md-2 col-sm-2 col-xs-12">时间:</label>
+						<div class="col-lg-4 col-md-5 col-sm-4 col-xs-6" style="padding-left:0;">
+							<input name="start_time" class="form-control form-control-extend Wdate" type="text"
+								   id="Beginday"
+								   onclick="WdatePicker({dateFmt:'yyyy-MM-dd 00:00:00' ,maxDate:'#F{ $dp.$D(\'Endday\')||\'%y-%M-{%d}\'}',readOnly:true})"
+								   placeholder="开始时间"/>
+						</div>
+						<div class="col-lg-4 col-md-5 col-sm-4 col-xs-6 pad0">
+							<input name="end_time" class="form-control form-control-extend Wdate" type="text"
+								   id="Endday"
+								   onclick="WdatePicker({dateFmt:'yyyy-MM-dd 23:59:59' ,minDate:'#F{ $dp.$D(\'Beginday\')}',maxDate:'%y-%M-{%d}',readOnly:true})"
+								   placeholder="结束时间"/>
+						</div>
+					</div>
+
+					<div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3">
+						<div class="col-sm-8 col-xs-offset-4">
+							<button type="button" class="btn btn-custom" id="sear">查询</button>
+							<button type="reset" class="btn btn-reset" onclick="searFormReset()">重置</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	  <!-- 搜索结束 -->
+
+	  <div class=" tool-body col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+	   <!-- 顶部功能区（搜索） -->
+	   <div class="tool-right text-right pad0">
+	     <button id="searBtn" class="btn btn-reset" type="button" title="普通搜索">
+		  <i class="glyphicon glyphicon-search hidden-xs"></i> &nbsp;搜索
+		 </button>
+	   </div>
+	   <!-- 搜索结束 -->
+	  </div>
+		<div id="replace-tpl"></div>
+
+   </div>
+</div>
+<script type="text/javascript">
+
+    $(function () {
+        init('point_control/index',$('#searForm').serialize());
+    })
+    $('#sear').click(function () {
+        indexAjaxComm(1,'point_control/index',$('#searForm').serialize());
+    })
+
+</script>
+<include file="Public/footer"/>
+

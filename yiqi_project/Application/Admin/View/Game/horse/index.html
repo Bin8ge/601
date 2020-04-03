@@ -1,0 +1,29 @@
+<include file="Public/header"/>
+<div  class="panle panle-bg">
+    <include file="Public/page_title"/>
+    <div class="panel-body horse-race-lamp">
+
+
+
+        <div class=" tool-body col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <!-- 顶部右侧搜索按钮 -->
+            <div class="tool-left text-left pad0">
+                <button type="button" class="btn btn-custom" onclick="add_btn('添加跑马灯','horse/add','add-from','horse/add')"><i class="fa fa-plus">&nbsp;</i>添加跑马灯</button>
+            </div>
+            <!-- 右侧搜索按钮结束 -->
+        </div>
+
+        <!-- 内容列表区 -->
+        <div id="replace-tpl"></div>
+        <!-- 内容列表区结束 -->
+
+    </div>
+</div>
+<include file="Public/footer"/>
+
+<script>
+    $(function(){
+        init("horse/index");     //初始化页面
+    });
+
+</script>

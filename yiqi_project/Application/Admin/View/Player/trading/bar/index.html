@@ -1,0 +1,22 @@
+
+  <!-- <div class="row total-list">
+	    <ul>
+		 <li><label>查询用户数:</label><span id="search-user-rows" class="total_user_number title-red"></span></li>
+         <li><label>在线用户数:</label><span class="total_user_number title-red"></span>/<span class="text-focus online_total_user_number"></span></li>	
+		 <li><label>总金币数:</label><span class="user_gold_number title-red"></span></li>
+		 <li><label>总输赢：</label><span class="user_total_lose_win_all_number title-red"></span></li>
+		 <li><label>当日总输赢：</label><span class="user_total_lose_win_today_number title-red"></span></li>
+		</ul>
+    </div>-->
+
+   <div class="row total-list">
+	   <ul>
+		   <li><label>当日交易玩家总数:</label><span class="title-red">{$total['people_total']|number_format}</span></li>
+		   <li><label>玩家总金币数:</label><span class="title-red">{$total['gold_total']|number_format}</span></li>
+		   <li><label>累计输赢:</label><span class="title-red">{$total['lose_win_total']|number_format}</span></li>
+		   <li><label>累计当日输赢:</label><span class="title-red">{$total['lose_win_day_total']|number_format}</span></li>
+		   <li><label>累计接收:</label><span class="title-red">{$total['give_total']|number_format}</span></li>
+		   <li><label>累计赠送:</label><span class="title-red">{$total['send_total']|number_format}</span></li>
+		   &lt;!&ndash; <li><label>总买分:</label><span class="title-red">{$statistics['user_total_presend_get']|number_format}</span></li>&ndash;&gt;
+	   </ul>
+   </div>

@@ -1,0 +1,52 @@
+<extend name="Public/window_base"/>
+<block name="body">
+  <div class="modal-body edit-resource">
+    <form class="form" role="form" id="{:strtolower(str_replace(['/','-','_'],'',$form_id))}">
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">用户ID：</label>
+            <div class="col-xs-12 col-sm-8">
+			    <p class="form-control-static">{$data.uid}</p>
+                <!-- <input type="text" class="form-control input-border0" value="{$data.uid}"> -->
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">用户昵称：</label>
+            <div class="col-xs-12 col-sm-8">
+			    <p class="form-control-static">{$data.nickname}</P>
+                <!-- <input type="text" class="form-control input-border0" value="{$data.nickname}"> -->
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">当前银行金币数：</label>
+            <div class="col-xs-12 col-sm-8">
+			    <p class="form-control-static">{$data.bank}</p>
+                <!-- <input type="text" class="form-control input-border0" value="{$data.gold}"> -->
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">增减金币：</label>
+            <div class="col-xs-12 col-sm-8">
+                <input type="text" class="form-control form-control-extend" name="resource[gold_set]" placeholder="添加输入数字，减少【-】加减号">
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">操作原因:</label>
+            <div class="col-xs-12 col-sm-8">
+                <textarea class="form-control form-control-extend" name="resource[remark]"></textarea>
+            </div>
+        </div>
+    </form>
+   </div>
+    <script type="text/javascript">
+        //调用表单验证
+        backend.form_validate("{:strtolower(str_replace(['/','-','_'],'',$form_id))}", '{$selfUrl}', '{$fromValidate}',1);
+    </script>
+</block>

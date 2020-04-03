@@ -1,0 +1,40 @@
+<extend name="Public/base"/>
+<block name="body">
+    <div class="panle panle-bg">
+        <div class="panel-heading panel-head-bg">
+            <a class="panel-title">关联用户列表</a>
+            <span class="col-sm-6 col-xs-6 pull-right"><button type="button" class="close" aria-hidden="true" onclick="javascript:history.back(-1)">&times;</button></span>
+        </div>
+
+        <div class="panel-body trade-list">
+
+            <!-- 信息栏部分 -->
+            <include file="Player/user/bar/related_query"/>
+
+            <div class="table-responsive" style="overflow-x:visible;">
+                <table id="table" class="table table-striped table-hover"></table>
+            </div>
+            <!--内容列表区结束 -->
+
+        </div>
+    </div>
+    <!--引入基础js文件-->
+
+    <!--后台公共js-->
+    <script src="__JS__/backend.js"></script>
+
+    <!--Bootstrap-table 配置-->
+    <script src="__JS__/table.js"></script>
+
+    <!--获取不同的控制器 js-->
+    <php>$controller = strtolower(CONTROLLER_NAME); $action = strtolower(ACTION_NAME)</php>
+    <script src="__JS__/backend/{$controller}/{$action}.js"></script>
+
+    <!--初始化基本配置信息-->
+    <script type="text/javascript">
+        var Config = JSON.parse('{$config}');
+
+        var tableconfig = Controller.index('{$selfUrl}');
+    </script>
+
+</block>

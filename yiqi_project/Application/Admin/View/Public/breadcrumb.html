@@ -1,0 +1,10 @@
+<div class="col-xs-12 col-sm-12 bread-crumb pad0">
+    <ul class="breadcrumb breadcrumb-extend">
+        <li><a href="/admin/player/user"><span class="glyphicon glyphicon-home"></span></a></li>
+
+        <php>foreach($breadcrumb as $key => $value){</php>
+            <li><a href={$breadcrumb[1]['url']}>{$value['name']}</a></li>
+        <php>}</php>
+
+    </ul>
+</div>

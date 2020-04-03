@@ -1,0 +1,62 @@
+<extend name="Public/window_base"/>
+<block name="body">
+<div class="modal-body cancle-point">
+    <form class="form"  role="form"  id="cancelfrom">
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">用户：</label>
+            <div class="col-xs-12 col-sm-5">
+                <p class="form-control-static">{$data.username}</p>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">点控状态：</label>
+            <div class="col-xs-12 col-sm-5">
+                <p class="form-control-static"><php>if($data['type']==0)echo "控赢";else echo "控输";</php></p>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">点控方案：</label>
+            <div class="col-xs-12 col-sm-8">
+                <p class="form-control-static">{$data['plan']}</p>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">点控目标：</label>
+            <div class="col-xs-12 col-sm-8">
+                <p class="form-control-static">{$data['controlSum']|number_format}</p>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">当前进度：</label>
+            <div class="col-xs-12 col-sm-8">
+                <php>$n=sprintf("%01.2f", $data['progress']/$data['controlSum']*100).'%';</php>
+                <p class="form-control-static">{$data['progress']|number_format}（{$n}）</p>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">操作原因:</label>
+            <div class="col-xs-12 col-sm-8">
+                <textarea class="form-control form-control-extend" rows="5" name="cancel[reason]"></textarea>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+
+    </form>
+</div>
+    <script type="text/javascript">
+        //调用表单验证
+        backend.form_validate("{:strtolower(str_replace(['/','-','_'],'',$form_id))}", '{$selfUrl}', '{$fromValidate}',1);
+    </script>
+</block>

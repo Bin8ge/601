@@ -1,0 +1,67 @@
+<div id="replace-tpl">
+    <!--<div class="tool-body col-lg-12 col-xs-12">
+        <div class="row total-list">
+            <ul>
+                <li><label>当日交易玩家总数:</label><span class="title-red">{$total['people_total']|number_format}</span></li>
+                <li><label>玩家总金币数:</label><span class="title-red">{$total['gold_total']|number_format}</span></li>
+                <li><label>累计输赢:</label><span class="title-red">{$total['lose_win_total']|number_format}</span></li>
+                <li><label>累计当日输赢:</label><span class="title-red">{$total['lose_win_day_total']|number_format}</span></li>
+                <li><label>累计接收:</label><span class="title-red">{$total['give_total']|number_format}</span></li>
+                <li><label>累计赠送:</label><span class="title-red">{$total['send_total']|number_format}</span></li>
+               &lt;!&ndash; <li><label>总买分:</label><span class="title-red">{$statistics['user_total_presend_get']|number_format}</span></li>&ndash;&gt;
+            </ul>
+        </div>
+    </div>-->
+    <div class="table-responsive" style="overflow-x:visible;" >
+        <table class="table table-hover" style="font-size:1.2rem">
+            <thead>
+            <tr>
+                <th>用户ID</th>
+                <th>昵称</th>
+                <th>用户类型</th>
+                <th class="title-purple"><a id="user_gold" onclick="order(this.id,this.name)" name="asc" href="javascript:void (0)">总资产</a></th>
+                <th class="title-purple"><a id="user_lose_win_all" onclick="order(this.id,this.name)" name="asc" href="javascript:void (0)">总输赢</a></th>
+                <th class="title-purple"><a id="daily_gold" onclick="order(this.id,this.name)" name="asc" href="javascript:void (0)">当日输赢</a></th>
+                <th class="title-purple"><a id="total_take" onclick="order(this.id,this.name)" name="asc" href="javascript:void (0)">接收</a></th>
+                <th class="title-purple"><a id="total_send" onclick="order(this.id,this.name)" name="asc" href="javascript:void (0)">赠送</a></th>
+                <th class="title-purple">顺差(赠送-接收)</th>
+                <th>接收笔数</th>
+                <th>赠送笔数</th>
+                <th>接收人数</th>
+                <th>赠送人数</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <volist name="list" id="value">
+                <tr>
+                    <td class="text-focus"><a href="/admin/player/user/detail/uid/{$value['uid']}">{$value['uid']}</a>
+                    </td>
+                    <td class="text-focus"><a href="/admin/player/user/detail/uid/{$value['uid']}">{$value['nickname']}</a>
+                    </td>
+                    <td>用户类型</td>
+                    <td>{$value['user_gold']|number_format}</td>
+                    <td>{$value['user_lose_win_all']|number_format}</td>
+                    <td>{$value['daily_gold']|number_format}</td>
+                    <td>{$value['total_take']|number_format}</td>
+                    <td>{$value['total_send']|number_format}</td>
+                    <td>{$value['total_send']-$value['total_take']|number_format}</td>
+                    <td>{$value['total_take_num']|number_format}</td>
+                    <td>{$value['total_send_num']|number_format}</td>
+                    <td>{$value['total_send_people']|number_format}</td>
+                    <td>{$value['total_take_people']|number_format}</td>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+<!-- 	内容列表区结束 -->
+
+<!--  分页显示 -->
+<div class="col-lg-12 col-xs-12 text-center">
+    <ul class="pagination">
+        {$page}
+    </ul>
+</div>
+</div>
+<!--  分页结束 -->

@@ -1,0 +1,150 @@
+<include file="Public/header"/>
+<div class="panle panle-bg platform-ontheday">
+    <include file="Public/page_title"/>
+    <div class="panel-body recharge-record">
+
+        <!-- 内容列表区 -->
+        <div class="table-responsive" style="overflow-x:visible;">
+            <table class="table table-hover">
+                <tbody>
+                <tr>
+                    <th colspan="4" class="text-left">游戏统计</th>
+                </tr>
+                <tr>
+                    <td class="text-right">系统输赢:</td>
+                    <td class="text-left">{$data.lose_win|number_format}</td>
+                    <td class="text-right">点控输赢:</td>
+                    <td class="text-left">{$data.point|number_format}</td>
+                </tr>
+                <tr>
+                    <td class="text-right">游戏税收:</td>
+                    <td class="text-left">{$data.tax|number_format}</td>
+                    <td class="text-right">交易税收:</td>
+                    <td class="text-left">{$data.trading_tax|number_format}</td>
+                </tr>
+                <tr>
+                    <td class="text-right">公共库存:</td>
+                    <td class="text-left">{$data.public|number_format}</td>
+                    <td class="text-right">当日吞吐:</td>
+                    <td class="text-left">{$data.day_than|number_format=3}</td>
+                </tr>
+                <tr>
+                    <th colspan="4" class="text-left">金币统计</th>
+                </tr>
+                <tr>
+                    <td class="text-right">玩家金币总量:</td>
+                    <td class="text-left">{$data['people_gold']+$data['people_bank']|number_format}</td>
+                    <td class="text-right">代理金币总量:</td>
+                    <td class="text-left">{$data['vip_gold']+$data['vip_bank']|number_format}</td>
+                </tr>
+                <tr>
+                    <td class="text-right">玩家携带金币:</td>
+                    <td class="text-left">{$data.people_gold|number_format}</td>
+                    <td class="text-right">玩家银行金币:</td>
+                    <td class="text-left">{$data.people_bank|number_format}</td>
+                </tr>
+                <tr>
+                    <td class="text-right">GM添加:</td>
+                    <td class="text-left">{$data.gm_gold|number_format}</td>
+                </tr>
+                <tr>
+                    <th colspan="4" class="text-left">赠送接收</th>
+                </tr>
+                <tr>
+                    <td class="text-right">代理赠送代理:</td>
+                    <td class="text-left">{$data.vip_send_vip|number_format}</td>
+                    <td class="text-right">代理接收代理:</td>
+                    <td class="text-left">{$data.vip_take_vip|number_format}</td>
+                </tr>
+                <tr>
+                    <td class="text-right">代理赠送玩家:</td>
+                    <td class="text-left">{$data.vip_send_player|number_format}</td>
+                    <td class="text-right">代理接收玩家:</td>
+                    <td class="text-left">{$data.vip_take_player|number_format}</td>
+                </tr>
+                <tr>
+                    <td class="text-right">代理总赠送:</td>
+                    <td class="text-left">{$data.total_vip_send|number_format}</td>
+                    <td class="text-right">代理总接收:</td>
+                    <td class="text-left">{$data.total_vip_take|number_format}</td>
+                </tr>
+                <tr>
+                    <td class="text-right" width="25%">赠收顺差(代理赠送玩家-代理接收玩家):</td>
+                    <td class="text-left">{$data.diff_total|number_format}</td>
+                    <td class="text-right" width="25%">赠收比(代理接收玩家/代理赠送玩家):</td>
+                    <td class="text-left">{$data.than|number_format=3} &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red">(警戒线:1.107)</span></td>
+                </tr>
+                <tr>
+                    <td class="text-right">玩家赠送代理:</td>
+                    <td class="text-left">{$data.player_send_vip|number_format}</td>
+                    <td class="text-right">玩家赠送玩家:</td>
+                    <td class="text-left">{$data.player_send_player|number_format}</td>
+                </tr>
+                <tr>
+                    <td class="text-right">玩家接收代理:</td>
+                    <td class="text-left">{$data.player_take_vip|number_format}</td>
+                    <td class="text-right">玩家接收玩家:</td>
+                    <td class="text-left">{$data.player_take_player|number_format}</td>
+                </tr>
+
+
+                <tr>
+                    <th colspan="4" class="text-left">在线统计</th>
+                </tr>
+
+                <tr>
+                    <td class="text-right">当日最高在线:</td>
+                    <td class="text-left">{$data.max_total|number_format}人</td>
+                    <td class="text-right">玩家当日最高在线:</td>
+                    <td class="text-left">{$data.max_people|number_format}人</td>
+                </tr>
+                <tr>
+                    <td class="text-right">当前在线:</td>
+                    <td class="text-left">{$data.total_online|number_format}人</td>
+                </tr>
+                <tr>
+                    <td class="text-right">玩家当前在线:</td>
+                    <td class="text-left">{$data.people_online|number_format}人</td>
+                    <td class="text-right">代理当前在线:</td>
+                    <td class="text-left">{$data['total_online']-$data['people_online']|number_format}人</td>
+                </tr>
+                <tr>
+                    <th colspan="4" class="text-left">登录注册</th>
+                </tr>
+                <tr>
+                    <td class="text-right">当日登录:</td>
+                    <td class="text-left">{$data.day_log|number_format}人</td>
+                </tr>
+
+                <tr>
+                    <td class="text-right">当日注册:</td>
+                    <td class="text-left">{$data.total|number_format}人</td>
+                    <td class="text-right">安卓:</td>
+                    <td class="text-left">{$data.ad|number_format}人</td>
+                </tr>
+                <tr>
+                    <td class="text-right">IOS:</td>
+                    <td class="text-left">{$data.ios|number_format}人</td>
+                    <td class="text-right">PC:</td>
+                    <td class="text-left">{$data.pc|number_format}人</td>
+                </tr>
+                <tr>
+                    <td class=" text-right">总注册:</td>
+                    <td class=" text-left">{$data.total_reg|number_format}人</td>
+                    <td class=" text-right">安卓:</td>
+                    <td class=" text-left">{$data.total_and|number_format}人</td>
+                </tr>
+                <tr>
+                    <td class="text-right">IOS:</td>
+                    <td class="text-left">{$data.total_ios|number_format}人</td>
+                    <td class="text-right">PC:</td>
+                    <td class="text-left">{$data.total_pc|number_format}人</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- 	内容列表区结束 -->
+
+    </div>
+</div>
+<include file="Public/footer"/>

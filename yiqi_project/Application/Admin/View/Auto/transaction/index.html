@@ -1,0 +1,63 @@
+<include file="Public/header"/>
+<!--<body style="overflow-y:auto">-->
+<div  class="panle panle-bg">
+    <div class="panel-heading panel-head-bg">
+        <a class="panle-title">交易税比例设置</a>
+    </div>
+    <div class="panel-body email-list">
+
+        <!-- 内容列表区 -->
+        <form action="" method="post" id="add-form">
+            <div class="table-responsive" style="overflow-x:visible;">
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>赠送者</th>
+                        <th>收取者</th>
+                        <th>税率</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="list" id="val">
+                        <tr>
+                            <!--<input type="hidden" name="groupId[]" value="{$val.group}" >-->
+                            <td>{$val.giver}</td>
+                            <td>{$val.accept}</td>
+                            <td><input name="{$val.groupId}" type="number" min="0" class="input-custom" value="{$val.value}"/>%&nbsp;<span class="title-red">请填写>=0的整数</span></td>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+                <hr/>
+                <div class="panel-heading panel-head-bg">
+                    <a class="panle-title">交易限额配置</a>
+                </div>
+                <table class="table table-striped table-hover">
+                    <tbody>
+                    <tr>
+                        <td>普通用户最低赠送</td>
+                        <td><input name="1005" type="number" min="0" class="input-custom" value="{$send['1005']}"/>&nbsp;<span class="title-red">请填写>=0的整数</span></td>
+                    </tr>
+                    <tr>
+                        <td>VIP最低赠送</td>
+                        <td><input name="1035" type="number" min="0" class="input-custom" value="{$send['1035']}"/>&nbsp;<span class="title-red">请填写>=0的整数</span></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- 内容列表区结束 -->
+
+            <!-- 保存 -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                <button type="button" class="btn btn-reset" id="ref-btn">刷新获取</button>
+                <button type="button" class="btn btn-custom" id="add-btn">保存</button>
+            </div>
+        </form>
+    </div>
+</div>
+<include file="Public/footer"/>
+<php>$controller = strtolower(CONTROLLER_NAME); $action = strtolower(ACTION_NAME)</php>
+<script src="__JS__/backend/{$controller}/{$action}.js"></script>
+</body>
+</html>

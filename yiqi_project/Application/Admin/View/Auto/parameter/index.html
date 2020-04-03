@@ -1,0 +1,30 @@
+<include file="Public/header"/>
+<div class="panle panle-bg">
+    <include file="Public/page_title"/>
+    <div class=" tool-body col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <!-- 顶部右侧搜索按钮 -->
+        <div class="tool-left text-left pad0">
+            <button type="button" class="btn btn-custom" onclick="add_btn('添加游戏','parameter/add','addform','parameter/add')">添加游戏</button>
+        </div>
+        <!-- 右侧搜索按钮结束 -->
+    </div>
+    <div class="panel-body auto-control">
+        <!-- 内容列表区 -->
+        <div id="replace-tpl"></div>
+    </div>
+</div>
+
+<include file="Public/footer"/>
+<script type="text/javascript">
+    $(function () {
+        indexAjaxComm(1, 'parameter/index');
+    })
+
+    function editSub(obj,id) {
+        var show_sort = $(obj).parent().parent().find($("input[name='show_sort']")).val()
+        var status = $(obj).parent().parent().find($("select[name='status']")).val()
+        var is_push = $(obj).parent().parent().find($("select[name='is_push']")).val()
+        var data = {id:id,is_push:is_push,show_sort:show_sort,status:status};
+        ajaxComm('parameter/edit',data);
+    }
+</script>

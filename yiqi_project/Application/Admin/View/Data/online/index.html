@@ -1,0 +1,100 @@
+<include file="Public/header"/>
+<div class="panle panle-bg online-count">
+    <include file="Public/page_title"/>
+    <div class="panel-body">
+
+        <div class="table-search" style="display:block">
+            <!-- tab -->
+            <ul id="myTab" class="nav nav-tabs">
+                <li class="active">
+                    <a href="#" data-toggle="tab" onclick="tabBtn('hour')">
+                        最高在线统计
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="tab" onclick="tabBtn('day')">
+                        日平均在线统计
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="tab" onclick="tabBtn('month')">
+                        月平均在线统计
+                    </a>
+                </li>
+            </ul>
+            <!-- ./tab -->
+        </div>
+
+        <div class="continar-fluid tool-body-wrap">
+            <div class="row">
+                <div class=" tool-body col-lg-12 col-md-12 col-sm-12 col-xs-12 pad0">
+                    <!-- 顶部右侧搜索 -->
+                    <div class="tool-right col-lg-12 col-md-12 col-xs-12 text-right pad0">
+                        <form id="searForm" class="form-horizontal" action="" method="post">
+                            <div class="pull-right">
+                                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <label class="control-label control-label-title col-lg-2 col-md-2 col-sm-2 col-xs-12">时间:</label>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                        <input name="startTime" class="form-control form-control-extend Wdate" type="text" id="Beginday"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd' ,maxDate:'#F{ $dp.$D(\'Endday\')||\'%y-%M-{%d-1}\'}',readOnly:true})" placeholder="开始时间"/>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                        <input name="stopTime" class="form-control form-control-extend Wdate" type="text" id="Endday" onclick="WdatePicker({dateFmt:'yyyy-MM-dd' ,minDate:'#F{ $dp.$D(\'Beginday\')}',maxDate:'%y-%M-{%d}',readOnly:true})" placeholder="结束时间"/>
+                                    </div>
+                                    <input type="hidden" name="action" id="action" value="hour">
+
+                                    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-center marg-tp10">
+                                        <button id="sear" type="button" class="btn btn-custom" style="padding:.5rem 2rem;">搜索</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- 搜索结束 -->
+                </div>
+            </div>
+        </div>
+        <div id="replace-tpl">
+            <div id="container"></div>
+        </div>
+    </div>
+</div>
+
+<include file="Public/footer"/>
+<script src="__JS__/data.js"></script>
+<script type="text/javascript">
+    $(function () {
+        getDataPie('online/index','','用户在线数据统计','在线人数（人）','总在线人数');
+    })
+    $('#sear').click(function () {
+        getDataPie('online/index',$('#searForm').serialize(),'用户在线数据统计','在线人数（人）','总在线人数');
+    })
+    function tabBtn(action) {
+        $('#action').val(action);
+        getDataPie('online/index',$('#searForm').serialize(),'用户在线数据统计','在线人数（人）','总在线人数');
+    }
+    
+    function detailed(th,$type) {
+        var isShow =  $('#'+$type).val();
+        $.ajax({
+            //几个参数需要注意一下
+            type: "post",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: 'online/detail' ,//url
+            data: {type:$type},
+            success: function (result) {
+                if (isShow === '1') {
+                    $('#'+$type).val(0);
+                    $(th).parent().parent().after(result.data);
+
+                }else{
+                    $('.'+$type).remove();
+                    $('#'+$type).val(1);
+                }
+
+            },
+            error : function() {
+                alert("数据异常！！！");
+            }
+        })
+    }
+</script>

@@ -1,0 +1,50 @@
+<extend name="Public/window_base"/>
+
+<block name="body">
+    <div class="modal-body">
+        <div class="table-responsive">
+            <table class="table table-striped" style="font-size:1.2rem;">
+                <thead>
+                <tr>
+                    <th>标题</th>
+                    <th>内容</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>ID</td>
+                    <td>{$adminLogData.id}</td>
+                </tr>
+                <tr>
+                    <td>管理员ID</td>
+                    <td>{$adminLogData.admin_id}</td>
+                </tr>
+                <tr>
+                    <td>管理员名称</td>
+                    <td>{$adminLogData.username}</td>
+                </tr>
+                <tr>
+                    <td>标题</td>
+                    <td>{$adminLogData.title}</td>
+                </tr>
+                <tr>
+                    <td>内容</td>
+                    <td>{$adminLogData.content}</td>
+                </tr>
+                <tr>
+                    <td>IP</td>
+                    <td>{$adminLogData.ip}</td>
+                </tr>
+                <tr>
+                    <td>操作系统</td>
+                    <td>{$adminLogData.useragent}</td>
+                </tr>
+                <tr>
+                    <td>创建事件</td>
+                    <td>{$adminLogData.createtime|date="Y-m-d H:i:s",###}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</block>

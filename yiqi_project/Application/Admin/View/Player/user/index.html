@@ -1,0 +1,38 @@
+<extend name="Public/base"/>
+<block name="body">
+    <div class="panle panle-bg">
+        <include file="Public/page_title"/>
+
+        <div class="panel-body player-list">
+            <!-- 顶部搜索部分 -->
+           <!-- <include file="Public/search_bar"/>-->
+
+            <!-- 信息栏部分 -->
+           <!-- <include file="Player/user/bar/index"/>-->
+
+            <!-- 顶部功能区（添加、删除、搜索） -->
+
+            <div class=" tool-body col-lg-12 col-xs-12">
+                <div class="tool-right">
+                    <a href="/Admin/player/user/search">
+                        <button class="btn btn-reset" type="button" title="普通搜索">
+                            <i class="glyphicon glyphicon-search hidden-xs"></i><span><b>&nbsp;搜索</b></span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <!-- 顶部功能区结束 -->
+
+            <!-- 内容列表区 -->
+            <div class="table-responsive" style="overflow-x:visible;">
+
+                <table id="table" class="table table-striped table-hover"></table>
+            </div>
+            <!--内容列表区结束 -->
+
+        </div>
+    </div>
+    <!--引入基础js文件-->
+    <include file="Public/javascript"/>
+
+</block>

@@ -1,0 +1,71 @@
+<div id="replace-tpl">
+   <div class="tool-body col-lg-12 col-md-12 col-sm-12 col-xs-12">
+     <!-- 查询结果 -->
+     <div class="row total-list">
+        <ul>
+            <li><label>累计注册:</label><span class="title-red">{$total.total_reg|number_format}人</span></li>
+            <li><label>累计GM添加金币:</label><span class="title-red">{$total.total_gm|number_format}</span></li>
+            <li><label>累计顺差:</label><span class="title-red">{$total['total_send']-$total['total_take']|number_format}</span></li>
+            <li><label>累计赠送比:</label><span class="title-red"><if condition="$total['total_take'] gt 0" >{$total['total_take']/$total['total_send']|number_format=3}<else/>0.000</if></span></li>
+            <li><label>累计系统输赢:</label><span class="title-red">{$total.total_system|number_format}</span></li>
+            <li><label>累计点控输赢:</label><span class="title-red">{$total.total_point|number_format}</span></li>
+            <li><label>累计游戏税收:</label><span class="title-red">{$total.total_game|number_format}</span></li>
+            <li><label>累计交易税收:</label><span class="title-red">{$total.total_trade|number_format}</span></li>
+        </ul>
+     </div>
+     <!-- 查询结果结束 -->
+   </div>
+    <!-- 内容列表区 -->
+    <div class="table-responsive" style="overflow-x:visible;">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>时间</th>
+                <th>注册</th>
+                <th>登录</th>
+                <th>最高在线</th>
+                <th>GM添加金币</th>
+                <th>玩家总金币</th>
+                <th>VIP总金币</th>
+                <th>VIP赠送</th>
+                <th>顺差</th>
+                <th>赠送比</th>
+                <th>交易人数</th>
+                <th>交易笔数</th>
+                <th>系统输赢</th>
+                <th>吞吐率</th>
+                <th>点控输赢</th>
+                <th>公共库存</th>
+                <th>游戏税收</th>
+                <th>交易税收</th>
+            </tr>
+            </thead>
+            <tbody>
+            <volist name="list" id="val" >
+                <tr>
+                    <td>{$val.day_time}</td>
+                    <td>{$val.reg|number_format}</td>
+                    <td>{$val.login|number_format}</td>
+                    <td>{$val.max_online_player|number_format}</td>
+                    <td>{$val.gm_gold|number_format}</td>
+                    <td>{$val.player_gold|number_format}</td>
+                    <td>{$val.vip_gold|number_format}</td>
+                    <td>{$val.vip_send|number_format}</td>
+                    <td>{$val['vip_send']-$val['vip_take']|number_format}</td>
+                    <td>{$val['trade_than']|number_format=3}</td>
+                    <td>{$val.trade_people|number_format}</td>
+                    <td>{$val.trade_number|number_format}</td>
+                    <td>{$val.system_lose_win|number_format}</td>
+                    <td>{$val.than|number_format=3}</td>
+                    <td>{$val.point_lose_win|number_format}</td>
+                    <td>{$val.public_stock|number_format}</td>
+                    <td>{$val.game_tax|number_format}</td>
+                    <td>{$val.trade_tax|number_format}</td>
+                </tr>
+            </volist>
+
+            </tbody>
+        </table>
+    </div>
+    <!-- 	内容列表区结束 -->
+</div>

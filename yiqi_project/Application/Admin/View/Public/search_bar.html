@@ -1,0 +1,60 @@
+<php>$serachField = build_search_bar($merge);</php>
+<div class="table-search" <php>if($is_block == 1) echo 'style="display: none;"';</php> >
+    <form class="form-horizontal" id="search-form" name="search-form" action="__ACTION__" method="get">
+        <div class="row marg0">
+            <php> foreach($serachField as $key => $field):</php>
+                <php>if($field['type'] == 'datetime'):</php>
+
+                    <div class="form-group col-xs-12 col-sm-12 col-md-8 col-lg-6 col-lg-8-1300" style="margin-bottom:.2rem;">
+                    <php> foreach($field['tag'] as $key => $tag):</php>
+                            <php>if($key == 0):</php>
+                                <label class="control-label control-label-title col-lg-2 col-md-2 col-sm-2 col-xs-12">{$field.placeholder}</label>
+                            <php>endif;</php>
+
+                            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-6 <php>if($key == 1) echo 'pad0';</php>"  >
+                                {$tag}
+                            </div>
+                    <php> endforeach;</php>
+                    </div>
+
+                <php>elseif($field['type'] == 'select_or_text'):</php>
+
+                    <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-3 col-lg-4-1300" style="margin-bottom:.2rem;">
+                    <php> foreach($field['tag'] as $key => $tag):</php>
+                        <php>if($key == 0):</php>
+                            <label class="control-label control-label-title col-xs-4" style="padding-top:0">
+                                
+                                    {$tag}
+                             
+                            </label>
+                        <php>else:</php>
+                            <div class="col-xs-8">
+                                {$tag}
+                            </div>
+                        <php>endif;</php>
+                    <php> endforeach;</php>
+
+                    </div>
+                <php>else:</php>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 col-lg-4-1300">
+                        <label class="control-label control-label-title col-xs-4">{$field.placeholder}</label>
+                        <div class="col-xs-8">
+                            {$field.tag}
+                        </div>
+                    </div>
+                <php>endif;</php>
+
+            <php> endforeach;</php>
+            <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 col-lg-12-1300 text-center" style="margin-top:.3rem">
+                <div class="col-lg-12 col-sm-8">
+                    <button type="button" id="serachButton" class="btn btn-custom">查询</button>
+                    <button type="reset" class="btn btn-reset" onclick="$('#search-form')[0].reset();">重置</button>
+                    <in name="selfUrl" value="$csv">
+                        <button type="button" class="btn btn-info-lg" id="csv" >CSV导出</button>
+                    </in>
+                    {$outher_button}
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

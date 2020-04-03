@@ -1,0 +1,62 @@
+<include file="Public/window_header"/>
+<div class="modal-body add-notice">
+    <form id="add-form" class="form" role="form" action="" method="post">
+
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">公告标题：</label>
+            <div class="col-xs-12 col-sm-6">
+                <input name="title" type="text" class="form-control form-control-extend" value="" placeholder="公告标题(必填项)"/>
+                <span id="tishi" style="color: red;"></span>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+       <!-- <div class="form-group type_game" style="display: none">
+            <label class="control-label col-xs-12 col-sm-2 title-right">公告标题(英文)：</label>
+            <div class="col-xs-12 col-sm-6">
+                <input name="title_en" type="text" class="form-control form-control-extend" value="" placeholder="公告标题(英文)(必填项)"/>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>-->
+
+
+        <div class="form-group ">
+            <label class="control-label col-xs-12 col-sm-2 title-right">链接地址：</label>
+            <div class="col-xs-12 col-sm-6">
+                <input  name="linkUrl" type="text" class="form-control form-control-extend" value="" placeholder="https://www.baidu.com(选填项)"/>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-sm-2 col-xs-12 title-right">起止时间：</label>
+            <div class=" col-sm-3 col-xs-6">
+                <input name="startTime" class="form-control form-control-extend Wdate" type="text" id="Beginday"  onclick="WdatePicker({ dateFmt:'yyyy-MM-dd 00:00:00' ,maxDate:'#F{ $dp.$D(\'Endday\')||\'%y-{%M+2}-%d\'}',readOnly:true })" placeholder="开始时间"/>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <input name="endTime" class="form-control form-control-extend Wdate" type="text" id="Endday" onclick="WdatePicker({ dateFmt:'yyyy-MM-dd 00:00:00' ,minDate:'#F{ $dp.$D(\'Beginday\')}',readOnly:true })" placeholder="结束时间"/>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">公告内容：</label>
+            <div class="col-xs-12 col-sm-6">
+                <textarea  name="content" rows="5" type="text" class="form-control form-control-extend"  placeholder="必填项"></textarea>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br/>
+       <!-- <div class="form-group ">
+            <label class="control-label col-xs-12 col-sm-2 title-right">公告内容(英文)：</label>
+            <div class="col-xs-12 col-sm-6">
+                <textarea  name="content_en" rows="5" type="text" class="form-control form-control-extend"  placeholder="必填项"></textarea>
+            </div>
+        </div>-->
+
+    </form>
+</div>
+<include file="Public/footer"/>
+</body>
+</html>

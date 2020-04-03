@@ -1,0 +1,42 @@
+$(document).ready(function(){
+	
+	var h = window.innerHeight;
+	
+	$("#menu_left").height(h);
+	$(".content").height(h); 
+	
+	$('#box .panel-heading a').click(function (e) {
+	
+			e.preventDefault();
+			$('#box .panel-heading a').removeClass('active');
+			$(this).addClass('active');
+			var hrefVal = $(this).attr('href');
+			var headA = $(hrefVal).hasClass("in");						
+			$('#box .panel-heading a').children("span").removeClass('glyphicon glyphicon-minus add');		
+			$('#box .panel-heading a').children("span").addClass('glyphicon glyphicon-plus add');
+			if(headA==true){
+				//处理其他					
+				$(this).children("span").removeClass("glyphicon glyphicon-minus add");
+				$(this).children("span").addClass("glyphicon glyphicon-plus add");
+			}else {		
+				//处理其他		
+				$(this).children("span").removeClass("glyphicon glyphicon-plus add");	
+				$(this).children("span").addClass("glyphicon glyphicon-minus add");
+			}
+
+		});
+
+	
+})
+
+$(function() {
+		 $("#main_menu").mmenu({  
+              counters: true,  
+              classes: " mm-zoom-menu mm-zoom-panels",  
+              searchfield: false,  
+              footer: {  
+                  add: true,  
+                  content: "Powered by Real @2014"  
+              },		  
+          });
+	});	

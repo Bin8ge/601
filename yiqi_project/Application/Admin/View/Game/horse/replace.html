@@ -1,0 +1,51 @@
+<div id="replace-tpl">
+<div class="table-responsive" style="overflow-x:visible;">
+    <table class="table table-hover table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>跑马灯内容</th>
+            <th>类型</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            <th>播放间隔</th>
+            <th>重复次数</th>
+            <th>状态</th>
+            <th>操作员</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="list" id="val">
+            <tr>
+                <td>{$val.id}</td>
+                <td width="500px"><div style="width: 500px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">{$val.content}</div></td>
+                <td>{$val.type}</td>
+                <td>{$val.startTime|date="Y-m-d H:i:s",###}</td>
+                <td>{$val.endTime|date="Y-m-d H:i:s",###}</td>
+                <td>{$val.interval}</td>
+                <td>{$val.repeatTime}</td>
+                <td>{$val.runstatus}</td>
+                <td>{$val.adminId}</td>
+                <td>
+                    <a href="javascript:void(0)" class="btn btn-xs btn-edit btn-dlone" onclick="add_btn('编辑跑马灯','horse/edit?id={$val.id}','edit-from','horse/edit')">编辑</a>
+                    <eq name="val.status" value="1">
+                        <a href="javascript:void (0);" class="btn btn-xs btn-del-xs btn-dlone"  onclick="del_btn('{$val.id}',2,'horse/del','此跑马灯要关闭，您确定吗？','已关闭')" >停止播放</a>
+                        <else/>
+                        <a href="javascript:void (0);" class="btn btn-xs btn-info btn-dlone"  onclick="del_btn('{$val.id}',1,'horse/del','此跑马灯要开启，您确定吗？','已开启')" >开启播放</a>
+                    </eq>
+                </td>
+            </tr>
+        </volist>
+
+        </tbody>
+    </table>
+</div>
+<!--  分页显示 -->
+<div class="col-lg-12 col-xs-12" style="text-align:center;">
+    <ul class="pagination">
+       {$page}
+    </ul>
+</div>
+<!--  分页结束 -->
+</div>

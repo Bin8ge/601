@@ -1,0 +1,57 @@
+<div id="replace-tpl">
+    <div class=" tool-body col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <!-- 查询结果 -->
+        <div class="row total-list">
+            <ul>
+                <li><label>累计输赢:</label><span class="title-red">{$total.gold|number_format}</span></li>
+                <li><label>累计税收:</label><span class="title-red">{$total.total_tax|number_format}</span></li>
+                <li><label>累计吐分:</label><span class="title-red">{$total.spittinggold|number_format}</span></li>
+                <li><label>累计吃分:</label><span class="title-red">{$total.eatinggold|number_format}</span></li>
+                <li><label>累计吞吐率:</label><span class="title-red">{$total.than|number_format=3}</span></li>
+                <li><label>累计吐分次数:</label><span class="title-red">{$total.spittingnum|number_format}</span></li>
+                <li><label>累计旋转次数:</label><span class="title-red">{$total.spinnum|number_format}</span></li>
+                <li><label>累计中奖率:</label><span class="title-red">{$total.eat_than|number_format=3}</span></li>
+
+            </ul>
+        </div>
+        <!-- 查询结果结束 -->
+
+
+    </div>
+
+    <!-- 内容列表区 -->
+    <div class="table-responsive" style="overflow-x:visible;">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>时间</th>
+                <th>当日输赢</th>
+                <th>当日税收</th>
+                <th>当日吐分</th>
+                <th>当日吃分</th>
+                <th>当日吞吐率</th>
+                <th>当日吐分次数</th>
+                <th>当日旋转次数</th>
+                <th>当日中奖率</th>
+            </tr>
+            </thead>
+            <tbody>
+            <volist name="list" id="val">
+                <tr>
+                    <td>{$key}</td>
+                    <td>{$val.sum_gold|number_format}</td>
+                    <td>{$val.tax|number_format}</td>
+                    <td>{$val.sum_spi|number_format}</td>
+                    <td>{$val.sum_eat|number_format}</td>
+                    <td>{$val.than|number_format=3}</td>
+                    <td>{$val.spittingnum|number_format}</td>
+                    <td>{$val.spinnum|number_format}</td>
+                    <td>{$val.eat_than|number_format=3}</td>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+    <!-- 	内容列表区结束 -->
+
+</div>

@@ -1,0 +1,37 @@
+<include file="Public/window_header"/>
+<div class="modal-body add-notice">
+    <form id="add-form" class="form" role="form" action="" method="post">
+
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">房间信息：</label>
+            <div class="col-xs-12 col-sm-6">
+                <input  disabled="disabled" type="text" class="form-control form-control-extend" value="{$name}"/>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2 col-xs-12 title-right">执行时间：</label>
+            <div class=" col-sm-3 col-xs-6">
+                <input name="runtime" class="form-control form-control-extend Wdate" type="text"  onclick="WdatePicker({ dateFmt:'yyyy-MM-dd H:m:00',minDate:'#F{ \'%y-{%M}-%d\'}' ,readOnly:true })" placeholder="时间"/>
+                <span style="color: red; font-size: 13px">不填表示立即生效</span>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group ">
+            <label class="control-label col-xs-12 col-sm-2 title-right">库存增减值：</label>
+            <div class="col-xs-12 col-sm-6">
+                <input name="public_stock" type="text" class="form-control form-control-extend" value="" placeholder="添加输入数字，减少【-】加减号"/>
+                <span style="color: red;font-size: 13px">>0表示房间放水，<0表示房间吃分</span>
+            </div>
+        </div>
+        <input type="hidden" name="game_id"     value="{$info.type}">
+        <input type="hidden" name="product_id"  value="{$info.productid}">
+        <input type="hidden" name="machine_id"  value="{$machine_id}">
+    </form>
+</div>
+<include file="Public/footer"/>
+</body>
+</html>

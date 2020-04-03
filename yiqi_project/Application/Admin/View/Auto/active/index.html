@@ -1,0 +1,318 @@
+<include file="Public/header"/>
+<!--<body style="overflow-y:auto">-->
+<div  class="panle panle-bg">
+
+    <div class="panel-body email-list">
+
+
+        <form action="" method="post" id="add-form3">
+            <div class="table-responsive" style="overflow-x:visible;">
+                <br/>
+                <div class="panel-heading panel-head-bg">
+                    <a class="panle-title">新手保护设置</a>
+                </div>
+                <table class="table table-striped table-hover">
+                    <tbody>
+                    <volist name="list" id="val">
+                        <in name="val.groupId" value="1041,1052,1053">
+                            <tr>
+                                <td>{$val.name}</td>
+                                <td>
+                                    <input style="width: 70%" name="{$val.groupId}" type="text" class="input-custom" value="{$val.value}"/>
+                                    <if condition="$val.groupId eq 1041"><b style="color: red">0关 1开</b>
+                                        <else/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </if>
+                                </td>
+                            </tr>
+                        </in>
+                    </volist>
+                    <tr>
+                        <td colspan="2">
+                            <button type="button" class="btn btn-custom" onclick="submit_btn('#add-form3')" >确认保存</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 内容列表区结束 -->
+
+        </form>
+
+        <form action="" method="post" id="add-form6">
+            <div class="table-responsive" style="overflow-x:visible;">
+                <br/>
+                <br/>
+                <div class="panel-heading panel-head-bg">
+                    <a class="panle-title">输赢波动设置</a>
+                </div>
+                <table class="table table-striped table-hover">
+                    <tbody>
+                    <volist name="list" id="val">
+                        <in name="val.groupId" value="1059,1060,1061,1062,1063">
+                            <tr>
+                                <td>{$val.name}</td>
+                                <td>
+                                    <input style="width: 70%" name="{$val.groupId}" type="text" class="input-custom" value="{$val.value}"/>
+                                    <in name="val.groupId" value="1059"><b style="color: red">0关 1开</b>
+                                        <else/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </in>
+                                </td>
+                            </tr>
+                        </in>
+                    </volist>
+                    <tr>
+                        <td colspan="2">
+                            <button type="button" class="btn btn-custom" onclick="submit_btn('#add-form6')" id="add-btn6">确认保存</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 内容列表区结束 -->
+
+        </form>
+
+        <form action="" method="post" id="add-form4">
+            <div class="table-responsive" style="overflow-x:visible;">
+                <br/>
+                <br/>
+                <div class="panel-heading panel-head-bg">
+                    <a class="panle-title">充值体验设置</a>
+                </div>
+                <table class="table table-striped table-hover">
+                    <tbody>
+                    <volist name="list" id="val">
+                        <in name="val.groupId" value="1054,1055,1042,1058">
+                            <tr>
+                                <td>{$val.name}</td>
+                                <td>
+                                    <input style="width: 70%" name="{$val.groupId}" type="text" class="input-custom" value="{$val.value}"/>
+                                    <if condition="$val.groupId eq 1054"><b style="color: red">0关 1开</b>
+                                        <else/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </if>
+                                </td>
+                            </tr>
+                        </in>
+                    </volist>
+                    <tr>
+                        <td colspan="2">
+                            <button type="button" class="btn btn-custom" onclick="submit_btn('#add-form4')" >确认保存</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 内容列表区结束 -->
+
+        </form>
+
+        <form action="" method="post" id="add-form8">
+            <div class="table-responsive" style="overflow-x:visible;">
+                <br/>
+                <br/>
+                <div class="panel-heading panel-head-bg">
+                    <a class="panle-title">自动点控设置</a>
+                </div>
+                <table class="table table-striped table-hover">
+                    <tbody>
+                    <volist name="list" id="val">
+                        <in name="val.groupId" value="1065,1066,1067,1068,1069,1070,1071,1072,1073">
+                            <tr>
+                                <td>{$val.name}</td>
+                                <td>
+                                    <input style="width: 70%" name="{$val.groupId}" type="text" class="input-custom" value="{$val.value}"/>
+                                    <if condition="$val.groupId eq 1065 or $val.groupId eq 1068"><b style="color: red">0关 1开</b>
+                                        <else/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </if>
+                                </td>
+                            </tr>
+                        </in>
+                    </volist>
+                    <tr>
+                        <td colspan="2">
+                            <button type="button" class="btn btn-custom" onclick="submit_btn('#add-form8')" >确认保存</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 内容列表区结束 -->
+
+        </form>
+
+        <form action="" method="post" id="add-form1">
+            <div class="table-responsive" style="overflow-x:visible;">
+                <br/>
+                <br/>
+                <div class="panel-heading panel-head-bg">
+                    <a class="panle-title">中奖限额设置</a>
+                </div>
+                <table class="table table-striped table-hover">
+                    <tbody>
+                    <volist name="list" id="val">
+                        <in name="val.groupId" value="1022,1023,1024,1025">
+                            <tr>
+                                <td>{$val.name}</td>
+                                <td>
+                                    <input style="width: 70%" name="{$val.groupId}" type="text" class="input-custom" value="{$val.value}"/>
+                                    <in name="val.groupId" value="1022"><b style="color: red">0关 1开</b>
+                                        <else/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </in>
+                                </td>
+                            </tr>
+                        </in>
+                    </volist>
+                    <tr>
+                        <td colspan="2">
+                            <button type="button" class="btn btn-custom" onclick="submit_btn('#add-form1')" id="add-btn1">确认保存</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 内容列表区结束 -->
+
+        </form>
+
+        <form action="" method="post" id="add-form">
+            <div class="table-responsive" style="overflow-x:visible;">
+                <!-- 内容列表区 -->
+                <br/>
+                <br/>
+                <div class="panel-heading panel-head-bg">
+                    <a class="panle-title">拜财神参数设置</a>
+                </div>
+                <table class="table table-striped table-hover">
+                    <tbody>
+                    <volist name="list" id="val">
+                        <in name="val.groupId" value="1027,1030,1031,1032">
+                            <tr>
+                                <td>{$val.name}</td>
+                                <td>
+                                    <input style="width: 70%" name="{$val.groupId}" type="text"  class="input-custom" value="{$val.value}"/>
+                                    <if condition="$val.groupId eq 1027"><b style="color: red">0关 1开</b><else/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</if>
+                                </td>
+                            </tr>
+                        </in>
+                    </volist>
+                    <tr>
+                        <td colspan="2">
+                            <button type="button" class="btn btn-custom" onclick="submit_btn('#add-form')" id="add-btn">确认保存</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 内容列表区结束 -->
+        </form>
+
+        <form action="" method="post" id="add-form2">
+            <div class="table-responsive" style="overflow-x:visible;">
+                <br/>
+                <br/>
+                <div class="panel-heading panel-head-bg">
+                    <a class="panle-title">推广基金设置</a>
+                </div>
+                <table class="table table-striped table-hover">
+                    <tbody>
+                    <volist name="list" id="val">
+                        <in name="val.groupId" value="1036,1037,1038,1039,1040">
+                            <tr>
+                                <td>{$val.name}</td>
+                                <td>
+                                    <input style="width: 70%" name="{$val.groupId}" type="text" class="input-custom" value="{$val.value}"/>
+                                    <if condition="$val.groupId eq 1036"><b style="color: red">0关 1开</b>
+                                        <else/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </if>
+                                </td>
+                            </tr>
+                        </in>
+                    </volist>
+                    <tr>
+                        <td colspan="2">
+                            <button type="button" class="btn btn-custom" onclick="submit_btn('#add-form2')" id="add-btn2">确认保存</button>
+                            <!--  <button type="button" class="btn btn-del-lg btn-del" onclick="add_run()">运行脚本</button>-->
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 内容列表区结束 -->
+
+        </form>
+
+        <form action="" method="post" id="add-form5">
+            <div class="table-responsive" style="overflow-x:visible;">
+                <br/>
+                <br/>
+                <div class="panel-heading panel-head-bg">
+                    <a class="panle-title">输赢返利设置</a>
+                </div>
+                <table class="table table-striped table-hover">
+                    <tbody>
+                    <volist name="list" id="val">
+                        <in name="val.groupId" value="1056,1057">
+                            <tr>
+                                <td>{$val.name}</td>
+                                <td>
+                                    <input style="width: 70%" name="{$val.groupId}" type="text" class="input-custom" value="{$val.value}"/>
+                                    <if condition="$val.groupId eq 1056"><b style="color: red">0关 1开</b>
+                                        <else/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </if>
+                                </td>
+                            </tr>
+                        </in>
+                    </volist>
+                    <tr>
+                        <td colspan="2">
+                            <button type="button" class="btn btn-custom" onclick="submit_btn('#add-form5')" id="add-btn5">确认保存</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 内容列表区结束 -->
+
+        </form>
+
+        <form action="" method="post" id="add-form7">
+            <div class="table-responsive" style="overflow-x:visible;">
+                <br/>
+                <br/>
+                <div class="panel-heading panel-head-bg">
+                    <a class="panle-title">短信提醒设置</a>
+                </div>
+                <table class="table table-striped table-hover">
+                    <tbody>
+                    <volist name="list" id="val">
+                        <in name="val.groupId" value="1064,1074,1075,1076">
+                            <tr>
+                                <td>{$val.name}</td>
+                                <td>
+                                    <input style="width: 70%" name="{$val.groupId}" type="text" class="input-custom" value="{$val.value}"/>
+                                    <if condition="$val.groupId eq 1076"><b style="color: red">0关 1开</b>
+                                        <else/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </if>
+                                </td>
+                            </tr>
+                        </in>
+                    </volist>
+                    <tr>
+                        <td colspan="2">
+                            <button type="button" class="btn btn-custom" onclick="submit_btn('#add-form7')" >确认保存</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 内容列表区结束 -->
+
+        </form>
+
+    </div>
+</div>
+<include file="Public/footer"/>
+<php>$controller = strtolower(CONTROLLER_NAME); $action = strtolower(ACTION_NAME)</php>
+<script src="__JS__/backend/{$controller}/{$action}.js"></script>
+</body>
+</html>

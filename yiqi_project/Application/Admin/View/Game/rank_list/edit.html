@@ -1,0 +1,61 @@
+<include file="Public/window_header"/>
+<div class="modal-body change-rank">
+    <form class="form" role="form" action="" method="post" id="edit-from">
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">用户ID：</label>
+            <div class="col-xs-12 col-sm-8">
+			    <p class="form-control-static">{$list.uid}</p>
+                <!-- <input type="text" class="form-control input-border0" value="{$list.uid}"/> -->
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">当前名次：</label>
+            <div class="col-xs-12 col-sm-8">
+			    <p class="form-control-static">{$list.ranking}</p>
+                <!-- <input type="text" class="form-control input-border0" value="{$list.ranking}"/> -->
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">当前持有金币：</label>
+            <div class="col-xs-12 col-sm-8">
+			    <p class="form-control-static">{$list.gold}</p>
+                <!-- <input type="text" class="form-control input-border0" value="{$list.gold}"/> -->
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">金币变更：</label>
+            <div class="col-xs-6 col-sm-5">
+                <input name="virtual_value" value="{$list.virtual_value}" type="number" class="form-control form-control-extend" placeholder="请输入整数  ps: -3,-2,-1,0,1,2,3,10"/>
+            </div>
+            <label class="col-xs-6 col-sm-5 title-red" style="padding-top:.8rem;">对应排名玩家依次向下顺延</label>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">持续时间：</label>
+            <div class="col-xs-6 col-sm-5">
+                <input name="endtime" value="" type="text" class="form-control form-control-extend" placeholder="分钟计算"/>
+            </div>
+            <label class="col-xs-6 col-sm-5 title-red" style="padding-top:.8rem;">分钟计算</label>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <!-- <hr> -->
+        <input type="hidden" value="{$list.uid}" name="dataid">
+
+       <!-- <div class="form-group text-center" style="text-align:center">
+            <button class="btn btn-custom">保存</button>
+            <button class="btn btn-reset">取消</button>
+        </div>-->
+    </form>
+
+</div>
+<include file="Public/footer"/>
+</body>
+</html>

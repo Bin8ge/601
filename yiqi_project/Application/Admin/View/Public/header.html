@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>{$breadcrumb[1]['name']}</title>
+
+    <!-- 字体图标 -->
+    <link type="text/css" href="__CUBE__/plugin/fontawesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="__JS__/jquery-1.11.3.min.js"></script>
+
+    <!-- 最新 Bootstrap 套件 -->
+    <script src="__JS__/bootstrap.min.js"></script>
+    <link type="text/css" href="__CUBE__/plugin/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Bootstrap-table css -->
+    <link href="__JSLIBS__/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet">
+
+    <!-- Bootstrap-table JavaScript -->
+    <script src="__JSLIBS__/bootstrap-table/dist/bootstrap-table.min.js"></script>
+
+    <!-- Bootstrap-table Locales -->
+    <script src="__JSLIBS__/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+
+    <!-- 弹窗插件 -->
+    <script src="__JSLIBS__/layer/dist/layer.js"></script>
+
+    <!-- 日历插件 -->
+    <script type="text/javascript" src="__CUBE__/My97DatePicker/WdatePicker.js"></script>
+    <link type="text/css" href="__CUBE__/My97DatePicker/skin/WdatePicker.css" rel="stylesheet">
+
+    <!-- 侧滑导航 （移动端使用）-->
+    <link type="text/css" href="__CSS__/jquery.mmenu.all.css" rel="stylesheet"/>
+    <link type="text/css" href="__CSS__/jquery.mmenu.themes.css" media="all and (min-width: 900px)" rel="stylesheet"/>
+    <script type="text/javascript" src="__JS__/jquery.mmenu.min.all.js"></script>
+
+    <!-- ztree -->
+    <script type="text/javascript" src="__JS__/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="__JS__/jquery.ztree.excheck.js"></script>
+    <script type="text/javascript" src="__JS__/jquery.ztree.exedit.js"></script>
+
+    <!-- 自定义文件 -->
+    <link type="text/css" href="__CSS__/main.css" rel="stylesheet">
+
+    <!--日期控制插件-->
+    <script type="text/javascript" src="__JSLIBS__/moment/moment.js"></script>
+
+    <!-- highcharts -->
+    <script src="__JS__/highcharts.js"></script>
+
+    <!-- 添加 编辑 删除 按钮js  -->
+    <script src="__JS__/btn.js"></script>
+
+    <!--jquery cookie插件-->
+    <script type="text/javascript" src="__JS__/jquery.cookie.js"></script>
+    <script type="text/javascript" src="__JS__/js.js"></script>
+    <script type="text/javascript" src="__JS__/front.js"></script>
+
+</head>
+
+<body id="body">
+
+<!--移动端左侧菜单-->
+<php>if(isMobile()):</php>
+<include file="Public/left_mobile_menu"/>
+<php>endif;</php>
+
+<!--顶部导航以及用户信息-->
+<include file="Public/top_menu"/>
+
+<!--整体容器-->
+<div class="main row">
+
+    <!--pc端左侧菜单 -->
+    <php>if(!isMobile()):</php>
+    <include file="Public/left_pc_menu"/>
+    <php>endif;</php>
+
+    <div class="col-lg-content col-sm-12 col-xs-12 content-wrap">
+
+        <!--面包屑菜单-->
+        <include file="Public/breadcrumb"/>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">

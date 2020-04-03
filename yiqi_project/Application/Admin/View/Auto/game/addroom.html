@@ -1,0 +1,111 @@
+<include file="Public/window_header"/>
+<div class="modal-body add-notice">
+    <form id="addform" class="form" role="form" action="" method="post">
+
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 title-right">具体游戏：</label>
+            <div class="col-xs-12 col-sm-6">
+                <select  name="resource[ProductID]" class="form-control form-control-extend" >
+                    <option value="">请选择</option>
+                    <volist name="game" id="val">
+                        <option value="{$val.productid}">{$val.game_name}</option>
+                    </volist>
+                </select>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group type_game">
+            <label class="control-label col-xs-12 col-sm-3 title-right">游戏房间ID：</label>
+            <div class="col-xs-12 col-sm-6">
+                <input name="resource[MachineID]" type="number" class="form-control form-control-extend" value="" placeholder="100101001"/>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 title-right">公共库存：</label>
+            <div class="col-xs-12 col-sm-6">
+                <input name="resource[PublicStock]" type="number" class="form-control form-control-extend" value="" placeholder="公共库存"/>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group type_game" >
+            <label class="control-label col-xs-12 col-sm-3 title-right">奖池库存：</label>
+            <div class="col-xs-12 col-sm-6">
+                <input name="resource[JackpotStock]" type="number" class="form-control form-control-extend" value="" placeholder="奖池库存"/>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 title-right">库存分配比例：</label>
+            <div class="col-xs-12 col-sm-3">
+                <input name="resource[public_stock]" type="number" class="form-control form-control-extend" value="" placeholder="公共库存比例"/>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <input name="resource[jackpot_stock]" type="number" class="form-control form-control-extend" value="" placeholder="奖池库存比例"/>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <input name="resource[tax_stock]" type="number" class="form-control form-control-extend" value="" placeholder="税收库存比例"/>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <p style="color: red">ps:三项库存分配比例相加等于100</p>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <br>
+      <!--  <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 title-right">奖池库存最低值：</label>
+            <div class="col-xs-12 col-sm-6">
+                <input name="resource[BonusGameMaxMultiples]" type="number" class="form-control form-control-extend" value="" placeholder="奖池库存最低值"/>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>-->
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 title-right">玩家上限：</label>
+            <div class="col-xs-12 col-sm-6">
+                <input name="resource[MaxPlayer]" type="number" class="form-control form-control-extend" value="" placeholder="玩家上限"/>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 title-right">机器人上限：</label>
+            <div class="col-xs-12 col-sm-6">
+                <input name="resource[MaxBot]" type="number" class="form-control form-control-extend" value="" placeholder="机器人上限"/>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 title-right">库存基准：</label>
+            <div class="col-xs-12 col-sm-6">
+                <input name="resource[BenchmarkStock]" type="number" class="form-control form-control-extend" value="" placeholder="库存基准"/>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 title-right">库存可否击穿：</label>
+            <div class="col-xs-12 col-sm-6">
+            <select  name="resource[StockBreakdown]" class="form-control form-control-extend" >
+                <option value="1">可以</option>
+                <option value="0">不可以</option>
+            </select>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    //调用表单验证
+    backend.form_validate("{:strtolower(str_replace(['/','-','_'],'',$form_id))}", '{$selfUrl}', '{$fromValidate}',1);
+</script>
+<include file="Public/footer"/>
+</body>
+</html>

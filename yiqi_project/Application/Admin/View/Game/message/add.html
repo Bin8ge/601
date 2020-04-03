@@ -1,0 +1,66 @@
+<include file="Public/window_header"/>
+<div class="modal-body send-email">
+    <form id="add-from" action="" method="">
+
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">发送对象:</label>
+            <div class="col-xs-12 col-sm-8">
+                <textarea name="sendId" class="form-control form-control-extend" rows="3" placeholder="109897;109898"></textarea>
+                <p class="title-red">发送对象（ 分号为英文分号 ";" ） 收件人ID填写:  109897;109898</p>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-3 col-sm-2 title-right">是否在线：</label>
+            <div class="col-xs-8 col-sm-8">
+                <select class="form-control form-control-extend select-plan" name="is_online">
+                    <option value="">请选择</option>
+                    <option value="10">全部</option>
+                    <option value="1">在线</option>
+                </select>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br/>
+        <div class="form-group">
+            <label class="control-label col-xs-3 col-sm-2 title-right">对象类型：</label>
+            <div class="col-xs-8 col-sm-8">
+                <select class="form-control form-control-extend select-plan" name="send_type">
+                    <option value="">请选择</option>
+                    <option value="1">代理</option>
+                    <option value="2">IOS</option>
+                    <option value="3">全部玩家</option>
+                </select>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br/>
+        <div class="form-group mar-bt">
+            <label class="control-label col-xs-12 col-sm-2 title-right">邮件标题:</label>
+            <div class="col-xs-12 col-sm-8">
+                <input type="text" name="title" class="form-control form-control-extend" placeholder="请输入邮件标题"/>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">邮件内容:</label>
+            <div class="col-xs-12 col-sm-8">
+                <textarea name="disc" class="form-control form-control-extend" rows="4" placeholder="请输入邮件内容"></textarea>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">金币数量:</label>
+            <div class="col-xs-12 col-sm-8">
+                <input name="totalGive" type="number" min="0" class="form-control form-control-extend" placeholder="请输入金币数量">
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+    </form>
+</div>
+</body>
+</html>

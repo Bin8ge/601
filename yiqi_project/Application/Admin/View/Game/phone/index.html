@@ -1,0 +1,69 @@
+<include file="Public/header"/>
+<div  class="panle panle-bg phone-yzm-wrap">
+    <include file="Public/page_title"/>
+    <div class="panel-body">
+
+        <!-- 顶部搜索部分 -->
+        <div class="table-search" style="display:block">
+            <form id="searForm" class="form-horizontal" action="" method="post">
+                <div class="row marg0">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <label class="control-label control-label-title col-lg-5 col-md-4 col-sm-4 col-xs-4">手机号码:</label>
+                        <div class="col-lg-7 col-xs-8">
+                            <input type="text" class="form-control form-control-extend" name="phone" placeholder="填写手机号码" />
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 col-lg-4-1300">
+                        <label class="control-label control-label-title col-lg-5 col-md-4 col-sm-4 col-xs-4">验证码类型:</label>
+                        <div class="col-lg-7 col-xs-8">
+                            <select class="form-control form-control-extend" name="type"  >
+                                <volist name="type" id="val">
+                                    <option value="{$key}">{$val}</option>
+                                </volist>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="col-lg-12 col-xs-12 text-center-small">
+                            <button type="button" class="btn btn-custom" onclick="ajaxComm('phone/index',$('#searForm').serialize())">开始查询</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- 搜索结束 -->
+
+        <!-- 查询结果 -->
+        <div class="row total-list">
+            <ul style="width:100%;">
+                <li class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <label class="control-label control-label-title col-lg-5 col-md-4 col-sm-4 col-xs-5">最新验证码:</label>
+                    <span id="verfi">{$verfi}</span>
+                </li>
+            </ul>
+        </div>
+        <!-- 查询结束结束 -->
+    </div>
+</div>
+<include file="Public/footer"/>
+<script>
+    function ajaxComm(url,data) {
+        $.ajax({
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: url ,//url
+            data: data,
+            success: function (result) {
+                if (result.resultCode == 200) {
+                   $('#verfi').html(result.data)
+                }else{
+                    layer.msg(result.message,{icon: 0});
+                }
+            },
+            error : function() {
+                layer.msg('异常',{icon: 2});
+            }
+        })
+    }
+</script>

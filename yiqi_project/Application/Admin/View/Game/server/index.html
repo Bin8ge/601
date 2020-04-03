@@ -1,0 +1,26 @@
+<include file="Public/header"/>
+<div  class="panle panle-bg">
+    <include file="Public/page_title"/>
+    <div class="panel-body ranking-list">
+        <!-- 顶部搜索部分 -->
+        <div >
+            <form id="searForm" class="form-horizontal" action="" method="post">
+                <div class="row marg0">
+                    <volist name="list" id="val">
+                        <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-5">
+                            <label class="control-label control-label-title col-lg-4 col-xs-12"><b>{$val.name}：</b></label>
+                            <div class="col-lg-8 col-xs-12" style="padding-top:.5rem;padding-top:.7rem\9;">
+                                <label class="mar-r"><input type="radio" name="{$val.groupId}"   value='0' <eq name="val.value" value="0">checked</eq>>&nbsp;开(ON)</label>
+                                <label class="mar-r"><input type="radio" name="{$val.groupId}"   value='1' <eq name="val.value" value="1">checked</eq>>&nbsp;关(OFF)</label>
+                                <button  type="button" class="btn btn-custom" style="padding:.5rem 2rem;" onclick='ajaxComm("server/index","groupId={$val.groupId}&value="+$("input[name={$val.groupId}]:checked").val())'>保存</button>
+                            </div>
+                        </div>
+                    </volist>
+
+                </div>
+            </form>
+        </div>
+        <!-- 搜索结束 -->
+    </div>
+</div>
+<include file="Public/footer"/>

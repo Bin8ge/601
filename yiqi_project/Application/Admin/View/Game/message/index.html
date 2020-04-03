@@ -1,0 +1,95 @@
+<include file="Public/header"/>
+<div class="panle panle-bg">
+    <include file="Public/page_title"/>
+    <div class="panel-body email-list">
+        <!-- 顶部搜索部分 -->
+        <div class="table-search">
+            <form id="searForm" class="form-horizontal" action="" method="post">
+                <div class="row marg0">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <label class="control-label control-label-title col-xs-4">邮件类型:</label>
+                        <div class="col-xs-8">
+                            <select name="type" class="form-control form-control-extend">
+                                <option value="">全部</option>
+                                <option value="0">红包</option>
+                                <option value="1">补偿</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <label class="control-label control-label-title col-xs-4">邮件状态:</label>
+                        <div class="col-xs-8">
+                            <select name="isget" class="form-control form-control-extend">
+                                <option value="">请选择</option>
+                                <option value="0">未领取</option>
+                                <option value="1">已领取</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-12 col-md-8 col-lg-6">
+                        <label class="control-label control-label-title col-lg-2 col-md-2 col-sm-2 col-xs-12">发送时间:</label>
+                        <div class="col-lg-4 col-md-5 col-sm-5 col-xs-6" style="padding-left:0;">
+                            <input name="startTime" class="form-control form-control-extend Wdate" type="text"
+                                   id="Beginday"
+                                   onclick="WdatePicker({ dateFmt:'yyyy-MM-dd HH:00:00' ,maxDate:'#F{ $dp.$D(\'Endday\')||\'%y-%M-%d\'}',readOnly:true })"
+                                   placeholder="开始时间"/>
+                        </div>
+                        <div class="col-lg-4 col-md-5 col-sm-5 col-xs-6 pad0">
+                            <input name="endTime" class="form-control form-control-extend Wdate" type="text"
+                                   id="Endday"
+                                   onclick="WdatePicker({ dateFmt:'yyyy-MM-dd HH:00:00' ,minDate:'#F{ $dp.$D(\'Beginday\')}',readOnly:true })"
+                                   placeholder="结束时间"/>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-12 col-md-8 col-lg-6">
+                        <label class="control-label control-label-title col-lg-2 col-md-2 col-sm-2 col-xs-12">接收时间:</label>
+                        <div class="col-lg-4 col-md-5 col-sm-5 col-xs-6" style="padding-left:0;">
+                            <input name="updateStart" class="form-control form-control-extend Wdate" type="text"
+                                   id="Beginday"
+                                   onclick="WdatePicker({ dateFmt:'yyyy-MM-dd HH:00:00' ,maxDate:'#F{ $dp.$D(\'Endday\')||\'%y-%M-%d\'}',readOnly:true })"
+                                   placeholder="开始时间"/>
+                        </div>
+                        <div class="col-lg-4 col-md-5 col-sm-5 col-xs-6 pad0">
+                            <input name="updateEnd" class="form-control form-control-extend Wdate" type="text"
+                                   id="Endday"
+                                   onclick="WdatePicker({ dateFmt:'yyyy-MM-dd HH:00:00' ,minDate:'#F{ $dp.$D(\'Beginday\')}',readOnly:true })"
+                                   placeholder="结束时间"/>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="col-sm-8 col-xs-offset-4">
+                            <button type="button" class="btn btn-custom" onclick="indexAjaxComm(1,'message/index')">查询
+                            </button>
+                            <button type="reset" class="btn btn-reset" onclick="searFormReset()">重置</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- 搜索结束 -->
+
+        <div class=" tool-body col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <!-- 顶部右侧搜索 -->
+            <div class="tool-right text-right pad0">
+                <button id="searBtn" class="btn btn-reset" type="button" title="普通搜索">
+                    <i class="glyphicon glyphicon-search hidden-xs"></i> &nbsp;搜索
+                </button>
+            </div>
+
+            <!-- 搜索结束 -->
+            <div class="tool-left text-left pad0">
+                <button type="button" class="btn btn-custom"
+                        onclick="add_btn('发送邮件','message/add','add-from','message/add')">发送邮件
+                </button>
+            </div>
+        </div>
+
+        <div id="replace-tpl"></div>
+    </div>
+</div>
+<include file="Public/footer"/>
+<script>
+    $(function () {
+        init("message/index");     //初始化页面
+    });
+</script>

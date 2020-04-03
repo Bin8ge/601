@@ -1,0 +1,46 @@
+<div id="replace-tpl">
+    <!-- 内容列表区 -->
+    <div class="table-responsive" style="overflow-x:visible;">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>公告ID</th>
+                <th>公告类型</th>
+                <th>公告标题</th>
+                <th>公告链接</th>
+                <th>起始时间</th>
+                <th>结束时间</th>
+                <th>状态</th>
+                <th>操作员</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <volist name="list" id="val">
+                <tr>
+                    <td>{$val.id}</td>
+                    <td>{$val.type}</td>
+                    <td>{$val.title}</td>
+                    <td>{$val.linkUrl}</td>
+                    <td>{$val.startTime|date="Y-m-d H:i:s",###}</td>
+                    <td>{$val.endTime|date="Y-m-d H:i:s",###}</td>
+                    <td>{$val.run_status}</td>
+                    <td>{$val.admin_name}</td>
+                    <td>
+                        <a href="javascript:void(0)" class="btn btn-xs btn-edit btn-dlone" onclick="add_btn('编辑公告','notice/edit?id={$val.id}','add-form','notice/edit')">编辑</a>
+                        <eq name="val.status" value="1">
+
+                            <a href="javascript:void(0)" class="btn btn-xs btn-del-xs btn-dlone" onclick="del_btn('{$val.id}',2,'notice/del','您确定停止使用吗???','操作成功')">停止使用</a>
+                            <else/>
+                            <a href="javascript:void(0)" class="btn btn-xs btn-info btn-dlone" onclick="del_btn('{$val.id}',1,'notice/del','您确定开启使用吗???','操作成功')">开启使用</a>
+                        </eq>
+
+                    </td>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+    <!-- 内容列表区结束 -->
+
+</div>

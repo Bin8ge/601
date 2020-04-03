@@ -1,0 +1,26 @@
+<extend name="Public/window_base"/>
+<block name="body">
+    <div class="modal-body lock-user">
+        <form class="form" id="{:strtolower(str_replace(['/','-','_'],'',$form_id))}">
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-2 title-right title-left-xs">操作类型:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <p>批量锁定{$title}为<span class="title_red">&nbsp;<strong>{$value}</strong>&nbsp;</span>的玩家列表</p>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <br>
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-2 title-right title-left-xs"><span
+                        class="title-red">*</span>&nbsp;锁定理由:</label>
+                <div class="col-xs-10 col-sm-8">
+                    <textarea class="form-control form-control-extend" name="lock[remark]" ></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+        //调用表单验证
+        backend.form_validate("{:strtolower(str_replace(['/','-','_'],'',$form_id))}", '{$selfUrl}', '{$fromValidate}',1);
+    </script>
+</block>

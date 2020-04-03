@@ -1,0 +1,25 @@
+<include file="Public/header"/>
+<div  class="panle panle-bg">
+    <include file="Public/page_title"/>
+    <div class="panel-body game-bulletin">
+
+        <div class=" tool-body col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <!-- 顶部右侧搜索按钮 -->
+            <div class="tool-left text-left pad0">
+                <button type="button" class="btn btn-custom" onclick="add_btn('房间设置','notice/add','add-form','notice/add')"><i class="fa fa-plus">&nbsp;</i>添加公告</button>
+            </div>
+            <!-- 右侧搜索按钮结束 -->
+        </div>
+
+        <div id="replace-tpl"></div>
+    </div>
+</div>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        init("notice/index");     //初始化页面
+    });
+</script>
+<include file="Public/footer"/>
+

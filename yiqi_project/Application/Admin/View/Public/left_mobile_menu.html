@@ -1,0 +1,32 @@
+<!-- 侧滑导航开始 -->
+<nav id="main_menu">
+    <ul>
+        <foreach name="sidebar" item="val">
+            <li>
+               <span>
+                    <if condition="$val['childlist']">
+                        <a href="#{$val.py}" data-parent="#box" data-toggle="collapse" class="panel-title"><i class="fa {$val.icon} fa-sty"></i>{$val.name}<span class="glyphicon {$val.select} add"></span></a>
+                        <else />
+                        <a href="{$val.url}" class="panel-title"><i class="fa {$val.icon} fa-sty"></i>{$val.name}<span class="glyphicon {$val.select} add"></span></a>
+                    </if>
+               </span>
+                <if condition="$val['childlist']">
+
+                        <div >
+                            <ul class="nav nav-pills nav-stacked submeu">
+                             <span style="white-space:pre"></span>
+                                <foreach name="val['childlist']" item="val1">
+                                    <li class="submeu-li">
+                                        <a href="{$val1.url}"><i class="fa {$val1.icon} fa-sty"></i>{$val1.name}</a>
+                                    </li>
+                                </foreach>
+                            </ul>
+                        </div>
+
+                </if>
+
+            </li>
+        </foreach>
+    </ul>
+</nav>
+<!-- 侧滑导航结束 -->

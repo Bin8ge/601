@@ -1,0 +1,39 @@
+<include file="Public/header"/>
+
+<div  class="panle panle-bg">
+    <div class="panel-heading panel-head-bg">
+        <a class="panel-title">{$breadcrumb[1]['name']}</a>
+        <span id="back"><input type="button" class="btn btn-custom"
+                               value="返回" onclick="javascript:history.back(-1)"
+                               style="padding:.3rem 1.2rem;float:right"></span>
+    </div>
+    <div class="panel-body player-protect-list">
+        <!-- 顶部搜索部分 -->
+        <div class="table-search" style="display:block">
+            <form id="searForm" class="form-horizontal" action="" method="post">
+                <div class="row marg0">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 col-lg-4-1300">
+                        <label class="control-label control-label-title col-xs-4">游戏推广号:</label>
+                        <div class="col-xs-8">
+                            <input name="uid" value="{$uid}" type="number" class="form-control form-control-extend"  placeholder="游戏推广号" />
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 col-lg-4-1300">
+                        <label class="control-label control-label-title col-xs-4">游戏时间:</label>
+                        <div class="col-xs-8">
+                            <input name="createTime" class="form-control form-control-extend Wdate" type="text" id="Beginday"  onclick="WdatePicker({ dateFmt: 'yyyy_MM_dd_HH' })" placeholder="游戏时间"/>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 col-lg-4-1300 text-center-small">
+                        <button type="button" class="btn btn-custom" onclick="indexAjaxComm(1,'game_log/index',$('#searForm').serialize())">开始查询</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <!-- 搜索结束 -->
+
+        <div id="replace-tpl"></div>
+    </div>
+</div>
+<include file="Public/footer"/>

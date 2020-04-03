@@ -1,0 +1,84 @@
+<include file="Public/header"/>
+<div class="panle panle-bg agent-team">
+    <div class="panel-heading panel-head-bg">
+        <a class="panle-title">代理管理</a>
+    </div>
+    <div class="panel-body">
+        <!-- 顶部搜索部分 -->
+        <div class="table-search">
+            <form id="searForm" class="form-horizontal">
+                <div class="row marg0">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 col-lg-4-1300">
+                        <label class="control-label control-label-title col-xs-4">团队昵称查询</label>
+                        <div class="col-xs-8">
+                            <input name="teamName" type="text" class="form-control form-control-extend" placeholder="团队昵称">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-12 col-md-8 col-lg-5">
+                        <label class="control-label control-label-title col-lg-3 col-md-2 col-sm-2 col-xs-12">日期筛选</label>
+                        <div class="col-lg-4 col-md-5 col-sm-4 col-xs-6" style="padding-left:0;">
+                            <input name="starttime" class="form-control form-control-extend Wdate" type="text" id="Beginday"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:00:00' ,maxDate:'#F{ $dp.$D(\'Endday\')||\'%y-%M-%d\'}',readOnly:true})" placeholder="开始时间"/>
+                        </div>
+                        <div class="col-lg-4 col-md-5 col-sm-4 col-xs-6 pad0">
+                            <input name="stoptime" class="form-control form-control-extend Wdate" type="text" id="Endday" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:00:00' ,minDate:'#F{ $dp.$D(\'Beginday\')}',maxDate:'%y-%M-%d',readOnly:true})" placeholder="结束时间"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="col-sm-12 col-xs-12 text-center-small">
+                            <button type="button" class="btn btn-custom" onclick="indexAjaxComm(1,'agent/index',$('#searForm').serialize())">开始查询</button>&nbsp;
+                            <button type="button" class="btn btn-info-lg" onclick="add_btn('添加团队','agent/add','add-from','agent/add')">添加团队</button>
+                            <button type="button" class="btn btn-custom" onclick="csv()">导出Excel</button>&nbsp;
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="field" name="field" value="a.teamId">
+                    <input type="hidden" id="order" name="order" value="asc">
+                </div>
+
+            </form>
+        </div>
+        <!-- 搜索结束 -->
+
+        <div class=" tool-body col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <!-- 顶部右侧搜索 -->
+            <div class="tool-right text-right pad0">
+                <button id="searBtn" class="btn btn-reset" type="button" title="普通搜索">
+                    <i class="glyphicon glyphicon-search hidden-xs"></i> &nbsp;搜索
+                </button>
+            </div>
+        </div>
+
+        <div id="replace-tpl"></div>
+    </div>
+</div>
+<include file="Public/footer"/>
+<script type="text/javascript">
+    $(function () {
+        init("agent/index");     //初始化页面
+    });
+
+    /**
+     * 排序
+     * @param field
+     * @param order
+     */
+    function orderField(field,order) {
+        indexAjaxComm(1,'agent/index',$('#searForm').serialize()+"&field="+field+'&order='+order);
+        if (order == 'asc')
+        {
+            $('#'+field).attr('name','desc');
+            $('#'+field).after("<span style='float: right;color: #18bc9c'>▲</span>");
+        }else{
+            $('#'+field).attr('name','asc');
+            $('#'+field).after("<span style='float: right;color: #18bc9c'>▼</span>");
+        }
+        $("#field").val(field);
+        $("#order").val(order);
+
+    }
+    function csv() {
+
+        location.href ="http://"+window.location.host+"/admin/team/agent/index?file=csv";
+    }
+</script>

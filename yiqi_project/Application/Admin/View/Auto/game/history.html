@@ -1,0 +1,60 @@
+<include file="Public/header"/>
+<div  class="panle panle-bg">
+    <div class="panel-heading panel-head-bg">
+        <a class="panel-title">{$breadcrumb[1]['name']}</a>
+        <span class="col-sm-6 col-xs-6 pull-right"><button type="button" class="close" aria-hidden="true" onclick="javascript:history.back(-1)">&times;</button></span>
+    </div>
+    <div class="panel-body recharge-record">
+
+        <!-- 顶部搜索部分 -->
+        <div class="table-search">
+            <form id="searForm" class="form-horizontal" action="" method="post">
+                <div class="row marg0">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <label class="control-label control-label-title col-xs-4">房间ID:</label>
+                        <div class="col-xs-8">
+                            <input name="machine_id" value="{$machine_id}" class="form-control form-control-extend"  type="text" placeholder="房间ID"/>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-12 col-md-8 col-lg-5">
+                        <label class="control-label control-label-title col-lg-2 col-md-2 col-sm-2 col-xs-12">时间:</label>
+                        <div class="col-lg-5 col-md-5 col-sm-4 col-xs-6" style="padding-left:0;">
+                            <input name="startTime" class="form-control form-control-extend Wdate" type="text" id="Beginday"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd' ,maxDate:'#F{ $dp.$D(\'Endday\')||\'%y-%M-{%d}\'}',readOnly:true})" placeholder="开始时间"/>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-4 col-xs-6 pad0">
+                            <input name="endTime" class="form-control form-control-extend Wdate" type="text" id="Endday" onclick="WdatePicker({dateFmt:'yyyy-MM-dd' ,minDate:'#F{ $dp.$D(\'Beginday\')}',maxDate:'%y-%M-{%d}',readOnly:true})" placeholder="结束时间"/>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="col-sm-12 col-xs-12 text-center-small">
+                            <button id="sear" type="button" class="btn btn-custom">开始查询</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- 搜索结束 -->
+
+        <!-- 顶部右侧搜索 -->
+        <div class="tool-right col-lg-1 col-md-3 col-xs-4 text-right pad0">
+            <div class="col-lg-12 col-md-6 col-sm-5 col-xs-12 pad0">
+                <button id="searBtn" class="btn btn-reset" type="button" title="普通搜索">
+                    <i class="glyphicon glyphicon-search hidden-xs"></i> &nbsp;搜索
+                </button>
+            </div>
+        </div>
+        <!-- 搜索结束 -->
+        <div id="replace-tpl"></div>
+
+    </div>
+</div>
+<include file="Public/footer"/>
+<script>
+    $(function () {
+        init('history');
+    })
+    $('#sear').click(function () {
+        indexAjaxComm(1,'history',$('#searForm').serialize());
+    })
+
+</script>

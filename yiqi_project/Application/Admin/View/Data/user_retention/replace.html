@@ -1,0 +1,74 @@
+<div id="replace-tpl">
+    <!-- 内容列表区 -->
+    <div class="table-responsive" style="overflow-x:visible;">
+        <!-- <div id="container"></div> -->
+        <div class="col-lg-12 col-sm-12 pad0">
+            <table class="table table-extend">
+                <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>注册</th>
+                    <th>1日</th>
+                    <th>2日</th>
+                    <th>3日</th>
+                    <th>7日</th>
+                    <th>15日</th>
+                    <th>30日</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="list" id="val">
+                    <tr>
+                        <td>{$val.time}</td>
+                        <td>{$val.total|number_format}</td>
+                        <td
+                        <between name="val.one" value="0,20">class="text-gt1"</between>
+                        <between name="val.one" value="20,40">class="text-gt2"</between>
+                        <between name="val.one" value="40,60">class="text-gt3"</between>
+                        <between name="val.one" value="60,80">class="text-gt4"</between>
+                        <between name="val.one" value="80,100">class="text-gt5"</between>
+                        >{$val.one}%</td>
+                        <td
+                        <between name="val.two" value="0,20">class="text-gt1"</between>
+                        <between name="val.two" value="20,40">class="text-gt2"</between>
+                        <between name="val.two" value="40,60">class="text-gt3"</between>
+                        <between name="val.two" value="60,80">class="text-gt4"</between>
+                        <between name="val.two" value="80,100">class="text-gt5"</between>
+                        >{$val.two}%</td>
+                        <td
+                        <between name="val.three" value="0,20">class="text-gt1"</between>
+                        <between name="val.three" value="20,40">class="text-gt2"</between>
+                        <between name="val.three" value="40,60">class="text-gt3"</between>
+                        <between name="val.three" value="60,80">class="text-gt4"</between>
+                        <between name="val.three" value="80,100">class="text-gt5"</between>
+                        >{$val.three}%</td>
+                        <td
+                        <between name="val.seven" value="0,20">class="text-gt1"</between>
+                        <between name="val.seven" value="20,40">class="text-gt2"</between>
+                        <between name="val.seven" value="40,60">class="text-gt3"</between>
+                        <between name="val.seven" value="60,80">class="text-gt4"</between>
+                        <between name="val.seven" value="80,100">class="text-gt5"</between>
+                        >{$val.seven}%</td>
+                        <td
+                        <between name="val.fifteen" value="0,20">class="text-gt1"</between>
+                        <between name="val.fifteen" value="20,40">class="text-gt2"</between>
+                        <between name="val.fifteen" value="40,60">class="text-gt3"</between>
+                        <between name="val.fifteen" value="60,80">class="text-gt4"</between>
+                        <between name="val.fifteen" value="80,100">class="text-gt5"</between>
+                        >{$val.fifteen}%</td>
+                        <td
+                        <between name="val.thirty" value="0,20">class="text-gt1"</between>
+                        <between name="val.thirty" value="20,40">class="text-gt2"</between>
+                        <between name="val.thirty" value="40,60">class="text-gt3"</between>
+                        <between name="val.thirty" value="60,80">class="text-gt4"</between>
+                        <between name="val.thirty" value="80,100">class="text-gt5"</between>
+                        >{$val.thirty}%</td>
+                    </tr>
+                </volist>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- 	内容列表区结束 -->
+
+</div>

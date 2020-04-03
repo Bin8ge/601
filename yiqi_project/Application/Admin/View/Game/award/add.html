@@ -1,0 +1,118 @@
+<extend name="Public/window_base"/>
+
+<block name="body">
+    <!-- 日历插件 -->
+    <script type="text/javascript" src="__CUBE__/My97DatePicker/WdatePicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="__CUBE__/My97DatePicker/skin/WdatePicker.css">
+   <div class="modal-body">
+    <form class="form edit-resource" id="{:strtolower(str_replace(['/','-','_'],'',$selfUrl))}">
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">礼包名称：</label>
+            <div class="col-xs-12 col-sm-8 pad0">
+                <span class="col-lg-7 col-xs-12"><input type="text" class="form-control form-control-extend" name="row[name]"
+                                                        value="{$data['name']}"
+                                                        placeholder="填写礼包名称："/>
+				</span>
+                <span class="col-lg-5 col-xs-12 state-switch"><label><input type="checkbox" name="row[is_repeat]" value="1"/>&nbsp;能否多次使用（勾选后，同一批新手卡可使用多个，否则只可使用一个）</label></span>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+    <!--    <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">使用平台：</label>
+            <div class="col-xs-12 col-sm-8">
+                <php>$platform = C("VIEW")['reg_platform']['options'];</php>
+                <php>$channel = C("VIEW")['reg_channel']['options'];</php>
+                <select class="form-control form-control-extend" name="row[platform]">
+
+                    <php>foreach($platform as $key => $value):</php>
+                    <option value="{$key}" <php>if($data['platform']==$key) echo "selected"</php>>{$value}</option>
+                    <php>endforeach;</php>
+                </select>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">使用渠道：</label>
+            <div class="col-xs-12 col-sm-8">
+                <select class="form-control form-control-extend" name="row[channel]">
+                    <php>foreach($channel as $key => $value):</php>
+                    <option value="{$key}" <php>if($data['channel']==$key) echo "selected"</php>>{$value}</option>
+                    <php>endforeach;</php>
+                </select>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>-->
+       <!-- <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2 title-right">钻石数量：</label>
+        <div class="col-xs-12 col-sm-8">
+                <span class="col-lg-8 col-xs-10 pad0"><input type="text" class="form-control form-control-extend" name="row[diamond]"
+                                                             value="<php>echo $data['diamond'] ? $data['diamond'] : 0;</php>"
+                                                             placeholder="填写钻石数量 可选"/></span>
+        </div>
+    </div>
+        <div class="clearfix"></div>
+        <br>-->
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">金币数量：</label>
+            <div class="col-xs-12 col-sm-8">
+                <span class="col-lg-8 col-xs-10 pad0"><input type="text" class="form-control form-control-extend" name="row[gold]"
+                                                             value="<php>echo $data['gold'] ? $data['gold'] : 0;</php>"
+                                                             placeholder="填写金币数量 可选"/></span>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">有效期：</label>
+            <div class="col-sm-8 col-xs-12">
+                <span class="col-sm-5" style="padding-left:0;"><input class="form-control form-control-extend Wdate" type="text" name="row[addtime]"
+                                              value="{$data['addtime']}" id="Beginday"
+                                              onclick="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss' ,maxDate:'#F{ $dp.$D(\'Endday\')||\'%y-%M-{%d-1}\'}',readOnly:true })"
+                                              placeholder="开始时间"/></span>
+                <span class="col-sm-5" style="padding-right:0;"><input class="form-control form-control-extend Wdate" type="text" name="row[endtime]"
+                                              value="{$data['endtime']}" id="Endday"
+                                              onclick="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss' ,minDate:'#F{ $dp.$D(\'Beginday\')}',readOnly:true })"
+                                              placeholder="结束时间"/></span>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">生成数量：</label>
+            <div class="col-xs-12 col-sm-8">
+                <input type="text" class="form-control form-control-extend" name="row[awardNum]" value="{$data['awardNum']}"
+                       placeholder="填写生成数量："/>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 title-right">礼包内容清单:</label>
+            <div class="col-xs-12 col-sm-8">
+                <textarea class="form-control form-control-extend" name="row[content]">{$data['content']}</textarea>
+            </div>
+        </div>
+        <input type="hidden" name="row[status]" value="<php>echo $data['status'] ? $data['status'] : 1;</php>">
+        <input type="hidden" name="row[is_release]" value="{$data['is_release']}">
+    </form>
+  </div>
+    <php>$data_json = json_encode($data);</php>
+    <script type="text/javascript">
+        var data = JSON.parse('{$data_json}');
+
+        if(data){
+            if (data.is_repeat == 1) {
+                $("[name*='is_repeat'][value='1']").attr('checked', 'true');
+                $("[name*='platform']").val(data.platform);
+                $("[name*='channel']").val(data.channel);
+            }
+        }
+
+        //调用表单验证
+        backend.form_validate("{:strtolower(str_replace(['/','-','_'],'',$selfUrl))}", '{$selfUrl}', '{$fromValidate}', 1);
+    </script>
+</block>

@@ -1,0 +1,54 @@
+<include file="Public/header"/>
+
+<div  class="panle panle-bg">
+
+    <include file="Public/page_title"/>
+    <div class="panel-body ranking-list">
+
+        <!-- 顶部搜索部分 -->
+        <div class="table-search">
+            <form id="searForm" class="form-horizontal" action="" method="post">
+                <div class="row marg0">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <label class="control-label control-label-title col-xs-4">代理ID:</label>
+                        <div class="col-lg-8 col-sm-6 col-xs-5">
+                            <input name="uid" type="number" min="0" class="form-control form-control-extend"  />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="col-sm-8 col-xs-offset-4">
+                            <button type="button" class="btn btn-custom" onclick="indexAjaxComm(1,'rank_list/index')">查询 </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- 搜索结束 -->
+
+        <div class=" tool-body col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <!-- 顶部右侧搜索 -->
+            <div class="tool-right text-right pad0">
+                <button id="searBtn" class="btn btn-reset" type="button" title="普通搜索">
+                    <i class="glyphicon glyphicon-search hidden-xs"></i> &nbsp;搜索
+                </button>
+            </div>
+
+            <!-- 搜索结束 -->
+            <div class="tool-left text-left pad0">
+                <button type="button" class="btn btn-custom" onclick="add_btn('添加代理','rank_list/add','add-form','rank_list/add')"><i class="fa fa-plus">&nbsp;</i>添加代理</button>
+            </div>
+        </div>
+
+
+
+        <!-- 内容列表区 -->
+        <div id="replace-tpl"></div>
+
+    </div>
+</div>
+
+<include file="Public/footer"/>
+<php>$controller = strtolower(CONTROLLER_NAME); $action = strtolower(ACTION_NAME)</php>
+<script src="__JS__/backend/{$controller}/{$action}.js"></script>
+

@@ -1,0 +1,64 @@
+
+
+<extend name="Public/window_base"/>
+<block name="body">
+    <div class="modal-body edit-resource-form">
+        <form class="form" role="form" action="" method="post" id="{:strtolower(str_replace('/','',$selfUrl))}">
+            <div class="form-group">
+                <label class="control-label col-xs-4 col-sm-2 title-right">用户ID：</label>
+                <div class="col-xs-6 col-sm-8">
+                    <p class="form-control-static">{$user.uid}</p>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <br>
+            <div class="form-group">
+                <label class="control-label col-xs-4 col-sm-2 title-right">用户昵称：</label>
+                <div class="col-xs-6 col-sm-8">
+                    <p class="form-control-static">{$user.nickname}</p>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <br>
+            <div class="form-group">
+                <label class="control-label col-xs-4 col-sm-2 title-right">当前用户类型：</label>
+                <div class="col-xs-6 col-sm-8">
+                    <p class="form-control-static"><eq name="user.level" value="0">普通用户<else/>VIP{$user.level}</eq></p>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <br>
+            <div class="form-group">
+                <label class="control-label col-xs-4 col-sm-2 title-right">用户类型变更为：</label>
+                <div class="col-xs-5 col-sm-8">
+                    <select name="level" class="form-control form-control-extend">
+                        <volist name="level" id="val">
+                            <option value="{$key}" <eq name="user.level" value="$key">selected</eq> >{$val}</option>
+                        </volist>
+                    </select>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <br>
+            <div class="form-group">
+                <label class="control-label col-xs-4 col-sm-2 title-right">代理团队选择：</label>
+                <div class="col-xs-5 col-sm-8">
+                    <select name="teamId" class="form-control form-control-extend">
+                        <option value="">无代理团队</option>
+                        <volist name="agent" id="vo">
+                            <option value="{$vo['teamId']}" <if condition="$vo['teamId'] eq $teamId">selected</if> >{$vo['teamName']}</option>
+                        </volist>
+                    </select>
+                </div>
+                <input type="hidden" name="uid" value="{$user.uid}">
+                <div class="clearfix"></div>
+
+            </div>
+            <div class="clearfix"></div>
+        </form>
+    </div>
+    <script type="text/javascript">
+        //调用表单验证
+        backend.form_validate("{:strtolower(str_replace(['/','-','_'],'',$selfUrl))}", '{$selfUrl}', '{$fromValidate}',1);
+    </script>
+</block>

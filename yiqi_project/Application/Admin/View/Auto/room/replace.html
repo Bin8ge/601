@@ -1,0 +1,62 @@
+<div id="replace-tpl">
+    <div class="table-responsive" style="overflow-x:visible;">
+
+        <div id="myTabContent" class="tab-content">
+            <!--  玩法标签 -->
+
+            <div class="tab-pane fade in active" id="playerTag">
+                <form action="" method="post">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>游戏分类</th>
+                            <th>游戏等级ID</th>
+                            <th>游戏等级</th>
+                            <th>进入门槛</th>
+                            <th>公共库存</th>
+                            <th>奖池库存</th>
+                            <th>税收库存</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="list" id="val">
+                            <tr>
+                                <td>{$val.type_name}</td>
+                                <td>{$val.ProductID}</td>
+                                <td>{$val.name}</td>
+                                <td><input name="NeedGold" type="number" class="input-custom"
+                                           value="{$val.NeedGold}"/></td>
+                                <td><input name="public_stock" type="number" class="input-custom"
+                                           value="{$val.public_stock}"/></td>
+                                <td><input name="jackpot_stock" type="number" class="input-custom"
+                                           value="{$val.jackpot_stock}"/></td>
+                                <td><input name="tax_stock" type="number" class="input-custom"
+                                           value="{$val.tax_stock}"/></td>
+                                <td>
+
+                                    <a href="javascript:;" onclick='editSub(this,"{$val.ProductID}")' class="btn btn-xs btn-info btn-dlone marg-left btn-detail" >&nbsp;保存</a>
+                                    <eq name="val.is_open" value="1">
+                                        <a href="javascript:;" onclick="editSwitch('{$val.ProductID}',0)" class="btn btn-xs btn-del-xs marg-left btn-dlone btn-del">&nbsp;关闭</a>
+                                        <else/>
+                                        <a href="javascript:;" onclick="editSwitch('{$val.ProductID}',1)"class="btn btn-xs  btn-editone marg-left btn-dlone btn-edit" >&nbsp;开启</a>
+                                    </eq>
+
+
+                                </td>
+                            </tr>
+                        </volist>
+
+                        </tbody>
+                    </table>
+
+
+                </form>
+            </div>
+
+            <!-- 玩法标签结束 -->
+
+        </div>
+        <!-- 	内容列表区结束 -->
+    </div>
+</div>
